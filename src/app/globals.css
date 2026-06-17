@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #6b7280;
+  --card: #f9fafb;
+  --border: #e5e7eb;
+  --accent: #14b8a6; /* teal */
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #9ca3af;
+  --card: #141414;
+  --border: #262626;
+  --accent: #2dd4bf;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================================
+ * 기술 태그 색상 (skillsData / techStack 의 tagClass 값)
+ * ====================================================================== */
+.tag-blue {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+.tag-green {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+.tag-teal {
+  background-color: #ccfbf1;
+  color: #0f766e;
+}
+.tag-purple {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
+.tag-orange {
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+.tag-gray {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.dark .tag-blue {
+  background-color: #1e3a8a4d;
+  color: #93c5fd;
+}
+.dark .tag-green {
+  background-color: #14532d4d;
+  color: #86efac;
+}
+.dark .tag-teal {
+  background-color: #134e4a4d;
+  color: #5eead4;
+}
+.dark .tag-purple {
+  background-color: #581c874d;
+  color: #d8b4fe;
+}
+.dark .tag-orange {
+  background-color: #7c2d124d;
+  color: #fdba74;
+}
+.dark .tag-gray {
+  background-color: #37415133;
+  color: #d1d5db;
+}
