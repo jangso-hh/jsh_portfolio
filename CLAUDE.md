@@ -148,6 +148,7 @@ jsh_portfolio/
   마운트 가드 등 **의도된** 패턴은 해당 라인에 한정해 disable 주석을 단다.
 - 새 섹션을 추가하면 `page.tsx`에 조립하고, 데이터는 `portfolio.ts`에 타입과 함께 추가한다.
 
+
 ## 관련 문서
 
 - [DATA.md](DATA.md) — 콘텐츠 작성/추가 상세 가이드
