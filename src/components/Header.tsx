@@ -5,11 +5,11 @@ import ThemeToggle from "./ui/ThemeToggle";
 import { profileData } from "@/data/portfolio";
 
 const NAV_ITEMS = [
-  { label: "About", href: "#about" },
+  { label: "About me", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Archiving", href: "#archiving" },
   { label: "Projects", href: "#projects" },
   { label: "Career", href: "#career" },
-  { label: "Achievements", href: "#achievements" },
   { label: "Contact", href: "#contact" },
 ];
 

@@ -5,7 +5,7 @@ import { profileData } from "@/data/portfolio";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen items-center justify-center px-4">
+    <section className="relative flex min-h-screen items-center justify-center px-4">
       <div className="mx-auto max-w-3xl text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -20,49 +20,41 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-4 text-4xl font-bold tracking-tight sm:text-6xl"
+          className="mt-5 text-3xl font-bold leading-snug tracking-tight sm:text-5xl"
         >
-          {profileData.name}
+          안녕하세요.
+          <br />
+          <span className="text-accent">{profileData.tagline}</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-xl text-muted sm:text-2xl"
+          className="mt-5 text-lg text-muted sm:text-xl"
         >
-          {profileData.role}
+          {profileData.name} · {profileData.role}
         </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-6 text-base text-muted"
-        >
-          {profileData.tagline}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 flex flex-wrap justify-center gap-3"
-        >
-          <a
-            href="#projects"
-            className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-transform hover:scale-105"
-          >
-            프로젝트 보기
-          </a>
-          <a
-            href="#contact"
-            className="rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:bg-foreground/5"
-          >
-            연락하기
-          </a>
-        </motion.div>
       </div>
+
+      {/* 스크롤 유도 */}
+      <motion.a
+        href="#about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-sm text-muted transition-colors hover:text-foreground"
+      >
+        <span className="flex flex-col items-center gap-2">
+          더 알아보기
+          <motion.span
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            ↓
+          </motion.span>
+        </span>
+      </motion.a>
     </section>
   );
 }
