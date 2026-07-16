@@ -1,114 +1,142 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/ui/FadeIn";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SkillTag from "@/components/ui/SkillTag";
-import ProjectModal from "@/components/ui/ProjectModal";
-import { projectsData, type Project } from "@/data/portfolio";
+import {
+  caseStudiesData,
+  erpCaseStudy,
+  erpIntro,
+  erpProjectsData,
+  erpStackData,
+  type CaseStudy,
+} from "@/data/portfolio";
+import { em } from "@/lib/em";
 
-export default function Projects() {
-  const [selected, setSelected] = useState<Project | null>(null);
+/** 이미지가 원본처럼 가로폭 100%·비율 유지로 렌더링되도록 하는 공통 속성 */
+const fluidImg = {
+  width: 0,
+  height: 0,
+  sizes: "(max-width: 960px) 100vw, 960px",
+  style: { width: "100%", height: "auto" } as const,
+};
 
-  // 최신순 (id 내림차순)
-  const projects = [...projectsData].sort((a, b) => b.id - a.id);
-
+function CaseStudyCard({ cs }: { cs: CaseStudy }) {
   return (
-    <section id="projects" className="py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <SectionTitle title="Projects" subtitle="진행한 프로젝트" />
-
-        <div className="space-y-8">
-          {projects.map((project, i) => (
-            <FadeIn key={project.id} delay={i * 0.05}>
-              <article className="overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-lg md:flex">
-                {/* 대표 이미지 */}
-                <button
-                  type="button"
-                  onClick={() => setSelected(project)}
-                  aria-label={`${project.title} 자세히 보기`}
-                  className="group relative aspect-video w-full shrink-0 overflow-hidden bg-background md:aspect-auto md:w-2/5"
-                >
-                  {project.image && (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                    />
-                  )}
-                  {project.award && (
-                    <span className="absolute left-3 top-3 rounded-md bg-accent px-2 py-1 text-xs font-medium text-white">
-                      🏆 수상
-                    </span>
-                  )}
-                </button>
-
-                {/* 내용 */}
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-xs font-medium text-muted">
-                    {project.period}
-                  </p>
-                  <h3 className="mt-1 text-xl font-bold">{project.title}</h3>
-                  <p className="mt-1 text-sm text-accent">{project.subtitle}</p>
-                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-foreground/80">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {project.techStack.map((t) => (
-                      <SkillTag key={t} label={t} tagClass="tag-gray" />
-                    ))}
-                  </div>
-
-                  <div className="mt-auto flex flex-wrap items-center gap-3 pt-5 text-sm">
-                    <button
-                      type="button"
-                      onClick={() => setSelected(project)}
-                      className="font-medium text-accent hover:underline"
-                    >
-                      자세히 보기 →
-                    </button>
-                    {project.github && (
-                      <CardLink href={project.github} label="GitHub" />
-                    )}
-                    {project.demo && (
-                      <CardLink href={project.demo} label="Demo" />
-                    )}
-                    {project.pdf && (
-                      <CardLink href={project.pdf.url} label={project.pdf.label} />
-                    )}
-                    {project.video && (
-                      <CardLink
-                        href={project.video.url}
-                        label={project.video.label}
-                      />
-                    )}
-                  </div>
-                </div>
-              </article>
-            </FadeIn>
+    <div className={`cs${cs.purple ? " purple" : ""}`}>
+      <div className="cshd">
+        <span className="tag">{cs.tag}</span>
+        <h3>{cs.title}</h3>
+        <div className="role">{cs.role}</div>
+      </div>
+      <div className="csbd">
+        {cs.shots?.map((shot) => (
+          <div key={shot.src}>
+            <Image className="shot" src={shot.src} alt={shot.caption} {...fluidImg} />
+            <div className="shotcap">{shot.caption}</div>
+          </div>
+        ))}
+        {cs.beforeAfter && (
+          <>
+            <div className="ba">
+              <div className="bac">
+                <span className="bt old">BEFORE · 기존 구형 UI</span>
+                <Image src={cs.beforeAfter.before} alt="기존 디자인" {...fluidImg} />
+              </div>
+              <div className="bac">
+                <span className="bt new">AFTER · 직접 리디자인</span>
+                <Image src={cs.beforeAfter.after} alt="신규 디자인" {...fluidImg} />
+              </div>
+            </div>
+            <div className="arrowrow">{cs.beforeAfter.caption}</div>
+          </>
+        )}
+        {cs.rows.map((row) => (
+          <div key={row.label} className={`row${row.impact ? " impact" : ""}`}>
+            <div className="k">{row.label}</div>
+            <div className="val">
+              {row.text && em(row.text)}
+              {row.items && (
+                <ul>
+                  {row.items.map((item, i) => (
+                    <li key={i}>{em(item)}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+        <div className="stk">
+          {cs.stack.map((s) => (
+            <span key={s}>{s}</span>
           ))}
         </div>
       </div>
-
-      <ProjectModal project={selected} onClose={() => setSelected(null)} />
-    </section>
+    </div>
   );
 }
 
-function CardLink({ href, label }: { href: string; label: string }) {
+/** original.html 의 대표 프로젝트 ①(케이스스터디 3종) + ②(ERP 리디자인) */
+export default function Projects() {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={(e) => e.stopPropagation()}
-      className="text-muted transition-colors hover:text-foreground"
-    >
-      {label} ↗
-    </a>
+    <>
+      <div className="part" id="projects">
+        <span className="pn">★</span> 대표 프로젝트 ① · 단독으로 기획·개발한 제품
+      </div>
+      <div className="docbody">
+        {caseStudiesData.map((cs) => (
+          <FadeIn key={cs.title}>
+            <CaseStudyCard cs={cs} />
+          </FadeIn>
+        ))}
+      </div>
+
+      <div className="part">
+        <span className="pn">★</span> 대표 프로젝트 ② · 운수사 ERP 전 제품 리디자인 &amp; 개발
+      </div>
+      <div className="docbody">
+        <section style={{ marginTop: 20 }}>
+          <FadeIn>
+            <CaseStudyCard cs={erpCaseStudy} />
+          </FadeIn>
+
+          <p className="bigp">{em(erpIntro)}</p>
+
+          {erpProjectsData.map((pj) => (
+            <FadeIn key={pj.name}>
+              <div className="pj">
+                <div>
+                  <div className="ph">
+                    <b>{pj.name}</b>
+                    <span className={`lv lv-${pj.badgeType}`}>{pj.badge}</span>
+                    <span className="pd">{pj.scale}</span>
+                  </div>
+                  <div className="tl2">{pj.summary}</div>
+                  <ul>
+                    {pj.items.map((item, i) => (
+                      <li key={i}>{em(item)}</li>
+                    ))}
+                  </ul>
+                </div>
+                <Image
+                  className="pjshot"
+                  src={pj.image}
+                  alt={`${pj.name} 대시보드`}
+                  width={0}
+                  height={0}
+                  sizes="250px"
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </div>
+            </FadeIn>
+          ))}
+
+          <div className="stack" style={{ marginTop: 14 }}>
+            {erpStackData.map((s) => (
+              <span key={s} className="tag2">
+                {s}
+              </span>
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

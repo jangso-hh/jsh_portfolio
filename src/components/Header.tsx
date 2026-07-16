@@ -6,11 +6,9 @@ import { profileData } from "@/data/portfolio";
 
 const NAV_ITEMS = [
   { label: "About me", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Archiving", href: "#archiving" },
   { label: "Projects", href: "#projects" },
   { label: "Career", href: "#career" },
-  { label: "Contact", href: "#contact" },
+  { label: "Documents", href: "#achievements" },
 ];
 
 export default function Header() {

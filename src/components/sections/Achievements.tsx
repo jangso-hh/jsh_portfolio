@@ -1,101 +1,55 @@
 import FadeIn from "@/components/ui/FadeIn";
-import SectionTitle from "@/components/ui/SectionTitle";
 import {
-  awardData,
-  certificateData,
-  activityData,
-  projectsData,
+  documentsData,
+  scopeSkillsData,
+  scopeClientsData,
+  disclaimerNote,
 } from "@/data/portfolio";
 
-function projectTitle(projectId?: number) {
-  if (projectId == null) return null;
-  return projectsData.find((p) => p.id === projectId)?.title ?? null;
-}
-
+/** original.html 의 제안서·기획 산출물(.dcard) + 핵심 역량·담당 고객사(.scope) + 안내(.note) */
 export default function Achievements() {
   return (
-    <section id="achievements" className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
-      <SectionTitle title="Achievements" subtitle="수상 · 자격증 · 대외활동" />
+    <div className="docbody" id="achievements">
+      <FadeIn>
+        <section>
+          <h2>직접 제작한 제안서 · 기획 산출물</h2>
+          {documentsData.map((doc) => (
+            <div key={doc.title} className="dcard">
+              <div className="dh">
+                <b>{doc.title}</b>
+                <span className={`bd b-${doc.badgeType}`}>{doc.badge}</span>
+              </div>
+              <ul>
+                {doc.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      </FadeIn>
 
-      <div className="grid gap-8 md:grid-cols-3">
-        {/* 수상 */}
-        <FadeIn>
-          <div className="h-full rounded-xl border border-border bg-card p-6">
-            <h3 className="mb-4 font-semibold">🏆 수상</h3>
-            <ul className="space-y-4">
-              {awardData.map((a, i) => {
-                const linked = projectTitle(a.projectId);
-                return (
-                  <li key={i}>
-                    <p className="font-medium">{a.title}</p>
-                    <p className="text-sm text-accent">{a.prize}</p>
-                    <p className="text-xs text-muted">{a.date}</p>
-                    {linked && (
-                      <p className="mt-1 text-xs text-muted">↳ {linked}</p>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+      <FadeIn>
+        <section>
+          <h2>핵심 역량 · 담당 고객사</h2>
+          <div className="scope" style={{ marginBottom: 12 }}>
+            {scopeSkillsData.map((s) => (
+              <span key={s} className="tag2">
+                {s}
+              </span>
+            ))}
           </div>
-        </FadeIn>
+          <div className="scope">
+            {scopeClientsData.map((c) => (
+              <span key={c} className="tag2">
+                {c}
+              </span>
+            ))}
+          </div>
+        </section>
+      </FadeIn>
 
-        {/* 자격증 */}
-        <FadeIn delay={0.05}>
-          <div className="h-full rounded-xl border border-border bg-card p-6">
-            <h3 className="mb-4 font-semibold">📜 자격증</h3>
-            <ul className="space-y-4">
-              {certificateData.map((c, i) => (
-                <li key={i}>
-                  <p className="font-medium">{c.title}</p>
-                  <p className="text-sm text-muted">{c.issuer}</p>
-                  <p className="text-xs text-muted">{c.date}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </FadeIn>
-
-        {/* 대외활동 */}
-        <FadeIn delay={0.1}>
-          <div className="h-full rounded-xl border border-border bg-card p-6">
-            <h3 className="mb-4 font-semibold">🤝 대외활동</h3>
-            <ul className="space-y-4">
-              {activityData.map((act, i) => {
-                const linked = projectTitle(act.projectId);
-                return (
-                  <li key={i}>
-                    <p className="font-medium">{act.organization}</p>
-                    <p className="text-sm text-accent">{act.role}</p>
-                    <p className="text-xs text-muted">{act.period}</p>
-                    <p className="mt-1 text-sm text-foreground/90">
-                      {act.description}
-                    </p>
-                    {linked && (
-                      <p className="mt-1 text-xs text-muted">↳ {linked}</p>
-                    )}
-                    {act.links && act.links.length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {act.links.map((l) => (
-                          <a
-                            key={l.label}
-                            href={l.demo ?? l.github ?? "#"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs font-medium text-accent hover:underline"
-                          >
-                            {l.label} ↗
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
+      <div className="note">{disclaimerNote}</div>
+    </div>
   );
 }
