@@ -524,11 +524,14 @@ export interface DocHeroData {
 }
 
 export const docHeroData: DocHeroData = {
-  eyebrow: "Product Manager × Full-stack Engineer · Mobility",
+  eyebrow: "Product Manager × Full-stack Engineer",
   title: "제품을 **발굴하고, 만들고, 파는**\n프로덕트 엔지니어",
   who: "장소현 · ㈜서울소프트 개발3팀(모빌리티팀) · Full-stack Engineer & PM",
   lead:
-    "**PM으로 제품을 기획·관리하는 동시에, 풀스택으로 직접 개발**합니다. 요구정의·프로젝트 관리·제안·조달 같은 기획/사업 역량과, 웹·앱·백엔드를 만들어 배포·운영하는 개발 역량을 ==둘 다 주력으로== 갖췄습니다. — 지금도 **PM과 개발을 동시에** 깊게 하는 사람입니다.",
+    "ERP와 그룹웨어를 비롯한 업무 시스템을 기획하고 개발했습니다. " +
+    "프로젝트마다 요구사항 분석부터 설계, 개발, 운영까지 직접 참여했으며, " +
+    "모빌리티 ERP와 ERP 연계 서비스를 구축하며 실제 운영 환경에서 사용되는 제품을 만들어 왔습니다.\n\n" +
+    "PM의 관점으로 문제를 정의하고, 개발자의 관점으로 해결하는 것이 저의 가장 큰 강점입니다.",
   pills: [
     "Python·Django",
     "React·TypeScript",

@@ -93,10 +93,10 @@ body {
 .hero { background: linear-gradient(135deg, #0b111c 0%, #152744 52%, #1f4574 100%); color: #fff; padding: 46px 48px 40px; position: relative; overflow: hidden; }
 .hero:after { content: ""; position: absolute; right: -80px; top: -80px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(59, 110, 245, 0.4), transparent 68%); }
 .eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #8fb0ff; font-weight: 700; }
-.hero h1 { font-size: 33px; font-weight: 800; margin: 12px 0 6px; letter-spacing: -0.02em; line-height: 1.25; }
+.hero h1 { font-size: 33px; font-weight: 800; margin: 12px 0 6px; letter-spacing: -0.02em; line-height: 1.25; text-wrap: balance; }
 .hero h1 b { color: #7fd8cd; }
-.hero .who { font-size: 14.5px; color: #c4cede; margin-bottom: 18px; }
-.hero .lead { font-size: 16px; color: #eaf0f9; max-width: 720px; position: relative; line-height: 1.7; }
+.hero .who { font-size: 14.5px; color: #c4cede; margin-bottom: 18px; text-wrap: balance; }
+.hero .lead { font-size: 16px; color: #eaf0f9; max-width: 720px; position: relative; line-height: 1.7; text-wrap: pretty; }
 .hero .lead b { color: #fff; }
 .hero .lead b.em-teal { color: #7fd8cd; }
 .pills { margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; position: relative; }
