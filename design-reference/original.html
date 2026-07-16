@@ -1,0 +1,464 @@
+<meta charset="utf-8">
+<title>장소현 · 포트폴리오 — 기획하고 직접 만드는 프로덕트 엔지니어</title>
+<style>
+:root{--ink:#141a22;--sub:#5a6472;--line:#e7eaef;--bg:#fff;--soft:#f6f8fb;--acc:#3b6ef5;--acc2:#12b5a5;--pur:#7a5cff;--warn:#e8912b;--ok:#1f9d5b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:'Pretendard','Malgun Gothic','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--soft);line-height:1.65;font-size:14px}
+.page{max-width:960px;margin:0 auto;background:#fff;box-shadow:0 1px 40px rgba(20,26,34,.07)}
+/* hero */
+.hero{background:linear-gradient(135deg,#0b111c 0%,#152744 52%,#1f4574 100%);color:#fff;padding:46px 48px 40px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(59,110,245,.4),transparent 68%)}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8fb0ff;font-weight:700}
+.hero h1{font-size:33px;font-weight:800;margin:12px 0 6px;letter-spacing:-.02em;line-height:1.25}
+.hero h1 b{color:#7fd8cd}
+.hero .who{font-size:14.5px;color:#c4cede;margin-bottom:18px}
+.hero .lead{font-size:16px;color:#eaf0f9;max-width:720px;position:relative;line-height:1.7}
+.hero .lead b{color:#fff}
+.pills{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.pill{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.2);color:#e5ecf7;border-radius:999px;padding:5px 13px;font-size:12px;font-weight:600}
+/* value strip */
+.vstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.v{background:#fff;padding:18px 18px}
+.v .vt{font-size:14px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px}
+.v .vt .d{width:9px;height:9px;border-radius:3px;transform:rotate(45deg)}
+.v:nth-child(1) .d{background:var(--acc)}.v:nth-child(2) .d{background:var(--pur)}.v:nth-child(3) .d{background:var(--acc2)}
+.v p{font-size:12.4px;color:var(--sub);margin-top:5px}
+.body{padding:30px 48px 42px}
+section{margin:32px 0}
+h2{font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+h2:before{content:"";width:24px;height:2px;background:var(--acc)}
+h2 .sub2{font-size:11px;color:var(--sub);font-weight:600;letter-spacing:0;text-transform:none}
+/* strengths */
+.str{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sc{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px 19px;position:relative;overflow:hidden}
+.sc:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:linear-gradient(var(--acc),var(--acc2))}
+.sc h3{font-size:15.5px;font-weight:800;margin-bottom:6px}
+.sc p{font-size:12.8px;color:var(--sub)}
+.sc p b{color:var(--ink)}
+.growth{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;position:relative}
+.gstep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px;position:relative}
+.gstep .gy{display:inline-block;font-size:11px;font-weight:800;color:#fff;border-radius:20px;padding:2px 11px;margin-bottom:7px}
+.gstep:nth-child(1) .gy{background:#8a94a3}.gstep:nth-child(2) .gy{background:var(--acc)}
+.gstep:nth-child(3) .gy{background:var(--pur)}.gstep:nth-child(4) .gy{background:var(--ok)}
+.gstep b{font-size:14px;display:block;margin-bottom:4px}.gstep p{font-size:12px;color:var(--sub)}
+.gstep:not(:last-child):after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:#c3cbd6;font-weight:800;font-size:20px;z-index:2}
+@media(max-width:720px){.growth{grid-template-columns:1fr 1fr}.gstep:not(:last-child):after{display:none}}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.dcol{border-radius:13px;padding:16px 18px;border:1px solid var(--line)}
+.dcol.pm{background:linear-gradient(180deg,#eef4ff,#fff);border-color:#d7e6ff}
+.dcol.dev{background:linear-gradient(180deg,#f4f0ff,#fff);border-color:#e0d8ff}
+.dcol .dh{font-size:15px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.dcol.pm .dh{color:#2f5bc4}.dcol.dev .dh{color:#5a44b8}
+.dcol .dh .ic{width:23px;height:23px;border-radius:6px;color:#fff;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.dcol.pm .dh .ic{background:var(--acc)}.dcol.dev .dh .ic{background:var(--pur)}
+.dcol ul{list-style:none;margin:0}.dcol li{font-size:12.7px;color:#41505f;padding:3px 0 3px 15px;position:relative}
+.dcol li b{color:var(--ink)}.dcol li:before{content:"▪";position:absolute;left:2px;font-size:9px;top:6px}
+.dcol.pm li:before{color:var(--acc)}.dcol.dev li:before{color:var(--pur)}
+.dplus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--ink);z-index:3}
+.dmid{text-align:center;font-size:13px;font-weight:700;color:var(--ink);margin-top:12px;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+.dmid b{color:var(--acc)}
+@media(max-width:720px){.dual{grid-template-columns:1fr}.dplus{display:none}}
+/* case study */
+.cs{border:1px solid var(--line);border-radius:15px;overflow:hidden;margin-bottom:18px}
+.cs .cshd{padding:18px 22px;background:linear-gradient(135deg,#12203a,#20406e);color:#fff;position:relative}
+.cs .cshd .tag{position:absolute;right:18px;top:18px;background:rgba(127,216,205,.18);border:1px solid rgba(127,216,205,.5);color:#a9ebe0;font-size:10.5px;font-weight:800;letter-spacing:.05em;border-radius:6px;padding:4px 10px}
+.cs .cshd h3{font-size:19px;font-weight:800;padding-right:100px}
+.cs .cshd .role{font-size:12.5px;color:#b9cbe6;margin-top:4px}
+.cs .csbd{padding:18px 22px}
+.row{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row .k{font-size:11px;font-weight:800;color:var(--acc);letter-spacing:.06em;padding-top:2px}
+.row.impact .k{color:var(--ok)}
+.row .val{font-size:13px;color:#333d4b}
+.row .val b{color:var(--ink)}
+.row .val ul{list-style:none;margin:2px 0 0}
+.row .val li{font-size:12.6px;color:#41505f;padding:2px 0 2px 14px;position:relative}
+.row .val li:before{content:"▹";position:absolute;left:1px;color:var(--acc);font-weight:800}
+.stk{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.stk span{background:#eef2fb;color:#33507f;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:700}
+/* project rows (compact achievement) */
+.shot{width:100%;border-radius:11px;border:1px solid var(--line);display:block;margin-bottom:14px;box-shadow:0 2px 14px rgba(20,26,34,.08)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 6px}
+.bac{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.bac img{width:100%;display:block}
+.bac .bt{position:absolute;left:10px;top:10px;font-size:11px;font-weight:800;color:#fff;border-radius:5px;padding:3px 10px;letter-spacing:.04em}
+.bt.old{background:#8a94a3}.bt.new{background:var(--acc)}
+.arrowrow{text-align:center;font-size:12px;color:var(--sub);margin:6px 0 2px;font-weight:600}
+@media(max-width:720px){.ba{grid-template-columns:1fr}}
+.shotcap{font-size:11px;color:var(--sub);margin:-8px 0 14px;text-align:center}
+.pj{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 17px;margin-bottom:10px;display:grid;grid-template-columns:1fr 250px;gap:18px;align-items:center}
+.pjshot{width:100%;border-radius:9px;border:1px solid var(--line);display:block}
+@media(max-width:720px){.pj{grid-template-columns:1fr}}
+.pj .ph{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.pj .ph b{font-size:15px}
+.pj .ph .lv{font-size:10.5px;font-weight:800;color:#fff;border-radius:20px;padding:2px 10px}
+.lv-main{background:var(--pur)}.lv-key{background:var(--acc)}.lv-mod{background:var(--acc2)}
+.pj .ph .pd{font-size:11.5px;color:var(--sub)}
+.pj .tl2{font-size:12.6px;color:#33507f;font-weight:700;margin-bottom:5px}
+.pj ul{list-style:none;margin:0}
+.pj li{font-size:12.5px;color:#41505f;padding:2px 0 2px 14px;position:relative}
+.pj li:before{content:"▹";position:absolute;left:1px;color:var(--acc);font-weight:800}
+.pj li b{color:var(--ink)}
+.part{background:#0f1622;color:#fff;padding:14px 48px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.part .pn{background:var(--acc);color:#fff;width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.part.p2 .pn{background:var(--acc2)}
+/* timeline */
+.tl{position:relative;padding-left:30px;border-left:2px solid var(--line)}
+.period{position:relative;margin-bottom:20px}
+.period:before{content:"";position:absolute;left:-38px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--acc2);border:3px solid #fff;box-shadow:0 0 0 2px var(--acc2)}
+.pdate{font-size:12px;font-weight:800;color:var(--acc2)}
+.ptitle{font-size:15px;font-weight:800;margin:2px 0 6px}
+.period ul{list-style:none;margin:0}
+.period li{font-size:12.5px;color:#41505f;padding:2px 0 2px 14px;position:relative}
+.period li:before{content:"›";position:absolute;left:2px;color:var(--acc2);font-weight:800}
+.period li b{color:var(--ink)}
+.dcard{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin-bottom:9px}
+.dcard .dh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+.dcard .dh b{font-size:13.5px}
+.dcard .dh .bd{font-size:10px;font-weight:800;border-radius:5px;padding:2px 7px}
+.b-prop{background:#efe9ff;color:#5a44b8}.b-ba{background:#e9f0ff;color:#2f5bc4}.b-sales{background:#e6f7f2;color:#127a6c}.b-doc{background:#fff2e2;color:#b5701a}
+.dcard ul{list-style:none;margin:0}
+.dcard li{font-size:12.1px;color:#51606f;padding:2px 0 2px 13px;position:relative}
+.dcard li:before{content:"·";position:absolute;left:2px;color:var(--acc);font-weight:800}
+.stack,.scope{display:flex;flex-wrap:wrap;gap:7px}
+.tag2{background:#eef2fb;color:#33507f;border-radius:6px;padding:5px 11px;font-size:12px;font-weight:600}
+.note{background:var(--soft);border:1px dashed var(--line);border-radius:10px;padding:12px 15px;font-size:12px;color:var(--sub)}
+footer{padding:20px 48px;border-top:1px solid var(--line);color:var(--sub);font-size:11.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;background:var(--soft)}
+@media(max-width:720px){.vstrip,.str{grid-template-columns:1fr}.body,.hero,.part,footer{padding-left:22px;padding-right:22px}.row{grid-template-columns:1fr}}
+@media print{body{background:#fff;font-size:11.5px}.page{box-shadow:none;max-width:none}section,.cs,.pj,.period,.sc{break-inside:avoid}}
+</style>
+
+<div class="page">
+  <div class="hero">
+    <div class="eyebrow">Product Manager × Full-stack Engineer · Mobility</div>
+    <h1>제품을 <b>발굴하고, 만들고, 파는</b><br>프로덕트 엔지니어</h1>
+    <div class="who">장소현 · ㈜서울소프트 개발3팀(모빌리티팀) · Full-stack Engineer &amp; PM</div>
+    <p class="lead"><b>PM으로 제품을 기획·관리하는 동시에, 풀스택으로 직접 개발</b>합니다. 요구정의·프로젝트 관리·제안·조달 같은 기획/사업 역량과,
+    웹·앱·백엔드를 만들어 배포·운영하는 개발 역량을 <b style="color:#7fd8cd">둘 다 주력으로</b> 갖췄습니다.
+    — 지금도 <b>PM과 개발을 동시에</b> 깊게 하는 사람입니다.</p>
+    <div class="pills">
+      <span class="pill">Python·Django</span><span class="pill">React·TypeScript</span><span class="pill">Flutter</span>
+      <span class="pill">JavaScript·SCSS</span><span class="pill">Product / BA</span><span class="pill">제안·조달·계약</span><span class="pill">모빌리티 도메인</span>
+    </div>
+  </div>
+
+  <div class="vstrip">
+    <div class="v"><div class="vt"><span class="d"></span>기획–개발 원팀</div><p>PM이면서 직접 구현. 요구정의에서 배포까지 <b>번역 손실 없이</b> 빠르게.</p></div>
+    <div class="v"><div class="vt"><span class="d"></span>0 → 1 단독 완성</div><p>음주측정 준법 서비스·현장 그룹웨어를 <b>혼자 기획·개발·운영</b>.</p></div>
+    <div class="v"><div class="vt"><span class="d"></span>모빌리티 도메인</div><p>배차·정시성·수입금 정산·급여·DTG·음주측정까지 <b>규제와 현장</b>을 이해.</p></div>
+  </div>
+
+  <div class="body">
+
+    <section>
+      <h2>이 사람을 뽑아야 하는 이유</h2>
+      <div class="str">
+        <div class="sc"><h3>기획 의도를 코드로 옮기는 사람</h3><p>스펙을 남에게 넘기지 않고 <b>직접 만듭니다.</b> 왜 만드는지 아는 사람이 만들기에 스펙 왜곡이 없고, 아이디어에서 배포까지의 사이클이 짧습니다.</p></div>
+        <div class="sc"><h3>혼자서도 제품을 완성하는 실행력</h3><p>음주측정 준법 서비스(웹+앱)와 현장관리 그룹웨어를 <b>기획·UI 디자인·풀스택·배포·운영까지 단독</b>으로. 팀을 붙이면 리드도 가능합니다.</p></div>
+        <div class="sc"><h3>정확성이 생명인 영역을 다룸</h3><p>급여·4대보험·회계·음주측정 규제처럼 <b>오차가 곧 사고</b>인 도메인을 프로덕션 수준으로 개발·운영합니다.</p></div>
+        <div class="sc"><h3>사업까지 아는 개발자</h3><p>제품 제안서·견적·계약, 중기부 <b>혁신제품 지정·조달청 등록</b>, 다중 프로젝트 PM(WBS)까지. 개발과 비즈니스를 함께 말합니다.</p></div>
+        <div class="sc"><h3>UI/UX로 계약을 만드는 디자인 감각</h3><p>노후화된 ERP를 <b>최신 디자인으로 혼자 전면 개편</b>. 요즘 사용자가 원하는 완성도로 데모 경쟁력을 끌어올려 <b>실제 계약 수주에 기여</b>했습니다.</p></div>
+        <div class="sc"><h3>넓은 스택 · 빠른 실행</h3><p>Django·React·Flutter로 웹·앱·백엔드를 오가며 <b>여러 프로젝트에 동시에 프로덕션 기능을 출시</b>합니다.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>두 개의 큰 축 <span class="sub2">지금도 PM과 개발을 동시에 — 둘 다 주력</span></h2>
+      <div class="dual">
+        <div class="dcol pm">
+          <div class="dh"><span class="ic">P</span>기획 · PM 역량</div>
+          <ul>
+            <li><b>제품 기획 · 요구정의(BA) · 화면설계</b> — 운수사 ERP 라인업 전반</li>
+            <li><b>프로젝트 관리(WBS)</b> — 일정·리소스·QC, 다중 프로젝트 동시 총괄</li>
+            <li><b>제안 · 계약 · 정부조달</b> — 제안서·견적·계약, 중기부 혁신제품 지정·조달청 등록</li>
+            <li>도입 킥오프·회의록·요구사항 정의, 고객·현업·개발자 커뮤니케이션 허브</li>
+          </ul>
+        </div>
+        <div class="dcol dev">
+          <div class="dh"><span class="ic">&lt;/&gt;</span>개발 역량</div>
+          <ul>
+            <li><b>풀스택</b> — Python/Django · React/TS · Flutter · JavaScript/SCSS</li>
+            <li><b>단독 제품 3종</b> — 음주측정 웹·앱, 현장관리 그룹웨어 (기획~배포~운영)</li>
+            <li><b>운수사 ERP 신규 모듈·백엔드</b> — 연료데이터·권한(RBAC)·정산·대시보드</li>
+            <li><b>전 제품 UI/UX 디자인 시스템 개편</b>, 웹훅 자동화·데이터 시각화</li>
+          </ul>
+        </div>
+        <div class="dplus">＋</div>
+      </div>
+      <div class="dmid">두 역량이 <b>한 사람 안에서 시너지</b> — 기획 의도를 번역 손실 없이 직접 코드로, 개발 현실을 반영해 더 정확한 기획으로.</div>
+    </section>
+
+    <section>
+      <h2>성장 과정 <span class="sub2">PM 기반 위에 개발·디자인을 더해, 지금은 둘 다 주도</span></h2>
+      <div class="growth">
+        <div class="gstep"><span class="gy">2024</span><b>PM · 기획</b><p>운수사 ERP 프로젝트 관리(WBS)·요구정의·화면설계. 모빌하이 혁신제품 지정·조달 등록.</p></div>
+        <div class="gstep"><span class="gy">2025</span><b>＋ 개발 시작</b><p>유지보수·CS를 직접 맡으며 코드에 밀착, 개발까지 손대기 시작.</p></div>
+        <div class="gstep"><span class="gy">2026 상반기</span><b>＋ 풀스택 · UI 디자인</b><p>백엔드·프론트·모바일 구현 + 전 운수사 ERP UI를 최신 디자인으로 개편.</p></div>
+        <div class="gstep"><span class="gy">현재</span><b>PM · 개발 동시 주도</b><p>기획·관리와 풀스택 개발·디자인을 병행 — 두 역량 모두 주력으로.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="part"><span class="pn">★</span> 대표 프로젝트 ① · 단독으로 기획·개발한 제품</div>
+  <div class="body">
+
+    <div class="cs">
+      <div class="cshd"><span class="tag">단독 개발 · 웹+앱</span>
+        <h3>알콜프리 — 운수종사자 음주측정 준법 서비스</h3>
+        <div class="role">기획 · UI/UX · 웹(React·TS·Python) · 앱(Flutter) · 배포 — 전 과정 단독</div>
+      </div>
+      <div class="csbd">
+        <img class="shot" src="img/driveon.jpg" alt="DRIVE ON 통합 대시보드">
+        <div class="shotcap">실제 화면 — DRIVE ON(알콜프리) 관리자 통합 대시보드</div>
+        <div class="row"><div class="k">배경</div><div class="val">여객자동차법 개정으로 운수종사자 <b>음주확인·3년 기록보관이 의무화</b>(미이행 시 과징금·사업정지). 그러나 현장은 여전히 수기 관리로 법적 리스크와 대리측정 문제가 상존.</div></div>
+        <div class="row"><div class="k">내가 한 일</div><div class="val"><ul>
+          <li>블루투스 음주측정기·지문/캠 본인확인을 연동해 <b>측정→서버 전송→PASS/FAIL 운행 승인·차단</b> 파이프라인 구현</li>
+          <li>관리자 웹: 실시간 측정 현황판, 지각/미측정자 관리, 노선·차량·직종 필터 + <b>PDF·Excel 리포트</b>, 문의게시판·개인알림</li>
+          <li>기사 앱: 블루투스 측정, <b>지도 기반 차량 실시간 위치</b>(OSM·역지오코딩), GPS 출퇴근, 배차 확인·측정기록</li>
+          <li>웹 Vercel 배포, 앱 iOS·Android 빌드 구성까지 직접</li>
+        </ul></div></div>
+        <div class="row impact"><div class="k">어필</div><div class="val"><b>규제 도메인 이해 + 하드웨어(BLE) 연동 + 웹·모바일 풀스택</b>을 혼자 완성. 회사의 음주측정 키오스크 사업과 실제로 연계되는 소프트웨어.</div></div>
+        <div class="stk"><span>React</span><span>TypeScript</span><span>Python</span><span>Flutter/Dart</span><span>Bluetooth(BLE)</span><span>OSM·GPS</span><span>PDF/Excel</span><span>Vercel</span></div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <div class="cshd"><span class="tag">단독 개발 · 라이브 운영</span>
+        <h3>현장·작업 관리 통합 그룹웨어 (에이아이정보기술)</h3>
+        <div class="role">기획 · UI 디자인 · 풀스택(Django·JS) · 모바일 · 운영 — 전 과정 단독</div>
+      </div>
+      <div class="csbd">
+        <img class="shot" src="img/aiit.jpg" alt="에이아이정보기술 그룹웨어 대시보드">
+        <div class="shotcap">실제 화면 — 현장·작업 관리 그룹웨어 대시보드</div>
+        <div class="row"><div class="k">배경</div><div class="val">현장 서비스 업무(접수→지시→작업일지)가 엑셀·수기로 분산되어 이력 추적과 정산이 어려운 상태.</div></div>
+        <div class="row"><div class="k">내가 한 일</div><div class="val"><ul>
+          <li><b>접수 → 작업지시서 → 직원·차량 배정 → 현장 작업(사진·자재·서명) → 결과보고·고객확인 → 승인·완료</b>의 상태값 기반 워크플로우 구축</li>
+          <li>전자결재·근태·연차·간트, 조직도, 고객→현장→장비 마스터, <b>역할 기반 권한(RBAC)</b></li>
+          <li>차량 운행일지(GPS·주행거리·유류비)·통계·인쇄 서식, <b>현장 기사용 모바일 웹 전체</b>를 별도 구축(데스크탑과 실시간 연동)</li>
+        </ul></div></div>
+        <div class="row impact"><div class="k">어필</div><div class="val">한 회사가 <b>매일 실제로 쓰는 기간 시스템</b>을 혼자 기획부터 운영까지. 데모가 아니라 라이브 레퍼런스.</div></div>
+        <div class="stk"><span>Python/Django</span><span>JavaScript</span><span>SCSS</span><span>반응형 모바일 웹</span><span>전자결재</span><span>권한(RBAC)</span><span>GPS</span></div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <div class="cshd"><span class="tag">주력 개발 · 사내 도구</span>
+        <h3>개발팀 생산성 도구 — 서울소프트 그룹웨어</h3>
+        <div class="role">신규 기능 설계·구축 (Django·JS·SCSS)</div>
+      </div>
+      <div class="csbd">
+        <img class="shot" src="img/groupware.jpg" alt="GitHub 업무분석/평가 화면">
+        <div class="shotcap">실제 화면 ① — GitHub 업무분석/평가 (커밋 자동 수집·팀 리더보드·레이더 평가)</div>
+        <img class="shot" src="img/groupware2.jpg" alt="GitHub 업무분석 상세 — 분포·기여·히트맵">
+        <div class="shotcap">실제 화면 ② — 활동 추세 · 작업 카테고리 분포 · 프로젝트별 기여 · 시간대/요일별 커밋 · 활동 히트맵</div>
+        <div class="row"><div class="k">배경</div><div class="val">개발 진척·성과·정부지원사업 데이터를 수기로 취합해 관리 부담이 큰 상황.</div></div>
+        <div class="row"><div class="k">내가 한 일</div><div class="val"><ul>
+          <li><b>GitHub 업무분석 시스템 신규 구축</b> — 웹훅으로 커밋 자동 수집, 담당자별 작업현황 대시보드, 14일 추이 KPI(문제를 스스로 발굴해 자동화)</li>
+          <li><b>WBS 관리</b> — 간트차트에 GitHub 커밋을 자동 매칭(키워드 토큰·모듈 별칭), 진행보고서 생성</li>
+          <li><b>정부지원사업 관리 페이지</b> — 엑셀형 인라인 편집 그리드(드래그 정렬·컬럼 고정·우클릭 메뉴), 점수 통계·가중치, PDF/인쇄, 엑셀 업/다운</li>
+          <li>전자결재(복사 후 재작성)·계약서 보관함·메뉴 권한 관리·대시보드 리디자인</li>
+        </ul></div></div>
+        <div class="row impact"><div class="k">어필</div><div class="val"><b>필요한 도구를 스스로 발굴해 만드는 사람.</b> 웹훅·자동 매칭 같은 실무형 자동화를 직접 설계.</div></div>
+        <div class="stk"><span>Django</span><span>GitHub 웹훅·분석</span><span>간트·WBS</span><span>인라인 편집 그리드</span><span>RBAC</span><span>PDF/Excel</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="part"><span class="pn">★</span> 대표 프로젝트 ② · 운수사 ERP 전 제품 리디자인 &amp; 개발</div>
+  <div class="body">
+    <section style="margin-top:20px">
+
+      <div class="cs" style="border-color:#e0d8ff">
+        <div class="cshd" style="background:linear-gradient(135deg,#37306b,#5a44b8)"><span class="tag" style="background:rgba(200,185,255,.22);border-color:rgba(200,185,255,.5);color:#dcd2ff">디자인 리더십</span>
+          <h3>전 운수사 ERP UI/UX 전면 리디자인 — "계약을 만든 디자인"</h3>
+          <div class="role" style="color:#c9bdf0">노후화된 구형 UI를 최신 디자인 시스템으로 — 제품군 전체를 단독 개편</div>
+        </div>
+        <div class="csbd">
+          <div class="ba">
+            <div class="bac"><span class="bt old">BEFORE · 기존 구형 UI</span><img src="img/before_old.jpg" alt="기존 디자인"></div>
+            <div class="bac"><span class="bt new">AFTER · 직접 리디자인</span><img src="img/mobilhi.jpg" alt="신규 디자인"></div>
+          </div>
+          <div class="arrowrow">정보 나열식 구형 대시보드 &nbsp;→&nbsp; 최신 트렌드 데이터 대시보드 (전 운수사 동일 기준으로 이식)</div>
+          <div class="row"><div class="k">배경</div><div class="val">수년간 기능 위주로 누적된 모빌하이 ERP는 UI가 노후화되어, 신규 운수사 <b>영업·데모에서 "요즘 시스템 같지 않다"</b>는 인상이 약점이었습니다. 요즘 사용자는 세련되고 최신화된 화면을 원합니다.</div></div>
+          <div class="row"><div class="k">내가 한 일</div><div class="val"><ul>
+            <li><b>전 운수사 ERP의 UI/UX를 혼자서 최신 디자인으로 전면 개편</b> — 춘천·성남·공항버스·강진·범일·모빌하이 등 제품군 전반을 일관된 디자인 언어로 통일</li>
+            <li><b>디자인 시스템 구축</b> — 컬러 팔레트·타이포그래피(NanumSquare)·카드/버튼/탭/아이콘·조회필터·테이블까지 컴포넌트 표준화</li>
+            <li><b>bento 대시보드 레이아웃</b> + 데이터 시각화 고도화(KPI 타일·도넛/바/라인 차트·히트맵·게이지·랭킹), <b>다크 레일 사이드바·폴딩</b>, 반응형</li>
+            <li>운수사별 <b>브랜드 톤앤매너 커스터마이징</b>(로고·컬러 반영)으로 "우리 회사 전용 시스템" 경험 제공</li>
+          </ul></div></div>
+          <div class="row impact"><div class="k">임팩트</div><div class="val">세련된 최신 UI가 영업·데모의 <b>강력한 차별점</b>이 되어 <b>신규 계약 수주에 직접 기여</b>. 체감 완성도·사용성이 크게 오르며 고객 반응이 달라졌습니다.</div></div>
+          <div class="stk"><span>Design System</span><span>UI/UX</span><span>데이터 시각화</span><span>SCSS</span><span>Figma</span><span>반응형</span><span>브랜딩</span></div>
+        </div>
+      </div>
+
+      <p class="big" style="font-size:13.5px;color:#2a3340;margin:18px 0 12px"><b>디자인 개편과 동시에</b>, 운영 중인 대규모 ERP 제품군 전반에서 <b>신규 모듈·백엔드 로직·대시보드를 직접 개발</b>해 프로덕션에 지속 출시했습니다. 아래는 <b>대표 사례 일부</b>입니다. (Python/Django + JS · 담당 범위: 배차·수입금·급여·회계·정비·자재·인사·경영분석 전 영역)</p>
+
+      <div class="pj">
+        <div>
+          <div class="ph"><b>춘천시민버스 ERP</b><span class="lv lv-main">UI 개편 + 주요 개발</span><span class="pd">시내버스 154대 규모</span></div>
+          <div class="tl2">UI 전면 리디자인 · 연료데이터 신규 모듈 · 차량 실시간 위치 · 경영/정시성 대시보드</div>
+          <ul>
+            <li><b>전 메뉴 UI/UX 전면 리디자인</b> — 대시보드·배차·수입금·급여·회계 등 15개 대메뉴를 최신 디자인 시스템으로 통일</li>
+            <li><b>연료데이터관리 모듈 신규 구축</b> — 전기·CNG·수소 충전데이터(모델·업로드·ZIP·배차노선 매칭 엑셀), 충전현황 대시보드(연료구분·요일별 분포 차트)</li>
+            <li><b>어드민 실시간 차량위치 지도</b> — 지도 UI·차량 검색(토스트·펄스)·줌별 아이콘·건물 폴리곤, <b>경영/정시성 대시보드</b>(노선별 수입금 랭킹·운영지표 시각화)</li>
+            <li>급여·4대보험·소득세 간이세액표 정산 로직, 회계 원장 정합성 개선, 공지·연장근로·정비이력·승무 등 다수 기능</li>
+          </ul>
+        </div>
+        <img class="pjshot" src="img/ccbus.jpg" alt="춘천 ERP 대시보드">
+      </div>
+
+      <div class="pj">
+        <div>
+          <div class="ph"><b>성남 모빌하이 ERP</b><span class="lv lv-main">UI 개편 + 주요 개발</span><span class="pd">시내버스</span></div>
+          <div class="tl2">UI/UX 전면 리뉴얼 · 권한 체계(RBAC) · 급여/인사 고도화</div>
+          <ul>
+            <li><b>UI/UX 전면 리뉴얼</b> — bento 대시보드, 사이드바 폴딩, 타이포·차트 브랜드 팔레트 통일, <b>글래스모피즘 로그인</b> 재설계, KPI 타일 시각화</li>
+            <li><b>메뉴 권한(RBAC) 일괄 적용</b> — 다중선택 + 부서·영업소·직군 필터, 권한 적용 성능 개선</li>
+            <li>급여·인사 고도화(운수직명단 고정헤더·급여소급·4대보험·사원별교육관리), <b>출력·엑셀 아이콘 버튼 디자인 시스템</b>, 조회필터·테이블 레이아웃 전역 표준화</li>
+          </ul>
+        </div>
+        <img class="pjshot" src="img/seongnam.jpg" alt="성남 ERP 대시보드">
+      </div>
+
+      <div class="pj">
+        <div>
+          <div class="ph"><b>공항버스 ERP</b><span class="lv lv-key">신규 도입 + UI 구축</span><span class="pd">2026 신규 계약</span></div>
+          <div class="tl2">도입 커스터마이징 · 메인 대시보드 · 브랜드 디자인 시스템</div>
+          <ul>
+            <li><b>신규 도입 프로젝트</b> — 요구사항 기반 모듈 커스터마이징 + <b>전역 디자인 시스템·메인 대시보드 신규 구축</b>(운영평가·사고건수 링·운행실적 시각화)</li>
+            <li>브랜드 아이덴티티 적용(심볼·국영문 로고·컬러), 회계·자재·정비·수입금 모듈 UI 정비, 인사 데이터 마이그레이션 보정</li>
+          </ul>
+        </div>
+        <img class="pjshot" src="img/gonghang.jpg" alt="공항버스 ERP 대시보드">
+      </div>
+
+      <div class="pj">
+        <div>
+          <div class="ph"><b>강진교통 ERP</b><span class="lv lv-key">UI 개편 + 모듈 신규</span><span class="pd">2026</span></div>
+          <div class="tl2">대시보드 전면 개편 · 시설관리 모듈 신규 풀빌드</div>
+          <ul>
+            <li><b>대시보드 UI/UX 전면 개편</b>(브랜드 반영·신규 디자인 시스템 적용)</li>
+            <li><b>시설관리 모듈 신규 풀빌드</b> — 자산/결함/점검/충전/계약/약도 + 모달 등록 UI + 데모 시드, htmx 부분 렌더링으로 로딩 성능 개선</li>
+          </ul>
+        </div>
+        <img class="pjshot" src="img/kangjin.jpg" alt="강진교통 ERP 대시보드">
+      </div>
+
+      <div class="pj">
+        <div>
+          <div class="ph"><b>범일운수 ERP</b><span class="lv lv-key">UI 개편 + 기능 개발</span><span class="pd">2026</span></div>
+          <div class="tl2">메인 대시보드 전면 리뉴얼 · 실시간 위젯 · 스케줄러</div>
+          <ul>
+            <li><b>메인 대시보드 전면 리뉴얼</b> + 실시간 위젯(뉴스·날씨 API)·메뉴 위젯/검색 UX·스케줄러</li>
+            <li>급여 정산 안정화(NULL·키 누락 서버에러·정비직 필터 수정), 점검정비 UI</li>
+          </ul>
+        </div>
+        <img class="pjshot" src="img/bumil.jpg" alt="범일운수 ERP 대시보드">
+      </div>
+
+      <div class="pj">
+        <div>
+          <div class="ph"><b>모빌하이 (메인 제품)</b><span class="lv lv-main">제품 디자인 기준</span><span class="pd">플래그십</span></div>
+          <div class="tl2">제품 대표 대시보드 신규 디자인 → 전 운수사 이식 기준</div>
+          <ul>
+            <li><b>제품 대표(플래그십) 대시보드 신규 디자인</b> — 이후 전 운수사 ERP 이식의 디자인 기준이 됨(공통 base·다크 레일 사이드바)</li>
+            <li><b>실시간 관제·자율주행·디지털 트윈</b> 대시보드(라이브맵·차량 선택) 등 차세대 화면 설계</li>
+          </ul>
+        </div>
+        <img class="pjshot" src="img/mobilhi.jpg" alt="모빌하이 메인 제품 대시보드">
+      </div>
+
+      <div class="stack" style="margin-top:14px">
+        <span class="tag2">Python</span><span class="tag2">Django</span><span class="tag2">JavaScript</span><span class="tag2">React</span><span class="tag2">TypeScript</span><span class="tag2">Flutter/Dart</span>
+        <span class="tag2">SCSS</span><span class="tag2">htmx</span><span class="tag2">REST API</span><span class="tag2">Bluetooth(BLE)</span><span class="tag2">지도(OSM)·GPS</span><span class="tag2">RBAC</span><span class="tag2">PDF/Excel</span><span class="tag2">Vercel</span><span class="tag2">Figma</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="part p2"><span class="pn">＋</span> PM · 사업 — 기획·제안·조달·계약 (개발 외 강점)</div>
+  <div class="body">
+
+    <section>
+      <h2>상세 이력 <span class="sub2">기간별 2024 – 2026</span></h2>
+      <div class="tl">
+        <div class="period">
+          <div class="pdate">2024. 06 – 12</div>
+          <div class="ptitle">사업추진팀 PM 온보딩 + 모빌하이 혁신제품 지정</div>
+          <ul>
+            <li><b>범일운수·화성도시공사 ERP 운영 PM</b> — WBS 일정관리, 배포 점검, 매뉴얼·패치노트·CS 보고서, 대금청구·전자세금계산서</li>
+            <li><b>모빌하이 중기부 혁신제품 지정(2024.08)</b> — 제품소개서·규격서·조달적합성 서류, 나라장터 등록 → 지정 획득</li>
+            <li>스마트공방/팩토리 정부지원사업 관리</li>
+          </ul>
+        </div>
+        <div class="period">
+          <div class="pdate">2025. 01 – 08</div>
+          <div class="ptitle">모빌리티 ERP 화면설계·기획 총괄 + 다중 프로젝트 WBS</div>
+          <ul>
+            <li><b>모빌리티 ERP 전반 화면설계·기획 담당</b> — 운수사별 업무 분석, 메뉴·기능 구조 설계, 요구사항 정의·컨펌, Figma 구성도(춘천·성남·공항버스 등 제품군 전반)</li>
+            <li>다중 프로젝트 일정 총괄(진척 점검·QC·구현 기간 설정·개발자/업체 소통)</li>
+            <li>인사총무·산업기능요원·인바운드 CS</li>
+          </ul>
+        </div>
+        <div class="period">
+          <div class="pdate">2025. 09 – 12</div>
+          <div class="ptitle">제품화 & B2B 영업·조달 본격화</div>
+          <ul>
+            <li>모빌하이 서비스소개서 타깃별 다버전·요금표·리플렛·도입제안 공문</li>
+            <li>신흥운수·강진·제천 구독 견적·계약, 음주측정 시스템 제안서·견적</li>
+            <li>혁신제품 시범사용 신청(서울 마을버스조합·번창교통·인천·제천)</li>
+          </ul>
+        </div>
+        <div class="period">
+          <div class="pdate">2026. 01 – 07</div>
+          <div class="ptitle">계약 실행 · 신규 ERP 도입 · 개발 본격 전환</div>
+          <ul>
+            <li><b>음주측정 키오스크 다수 운수사 물품공급계약</b>(성진·제일·전일·호남·신흥·춘천·강진) 및 발주·세금계산서 집행</li>
+            <li><b>공항버스 ERP 도입 PM</b> — 킥오프 주관·회의록 작성, 10개 모듈 요구사항 정의·개발방향 수립, 배포 협의 / 성남시내버스 협약</li>
+            <li><b>개발 본격 전환</b> — 위 개발 프로젝트를 직접 구현 / DTG 정성제안서·모빌하이 IR</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>직접 제작한 제안서 · 기획 산출물</h2>
+      <div class="dcard"><div class="dh"><b>음주측정 관리 시스템 제안서</b><span class="bd b-prop">제품 제안</span></div>
+        <ul><li>법규 근거(음주확인 의무·3년 보관·과징금 180~540만원) 정리 → 지문+캠+정밀측정+ERP 연동, 3단계 안전 필터링</li><li>키오스크/노트북형 2종·가격·AS·기대효과, 관리자 대시보드(측정사진·필터·Excel·이상 알림)</li></ul>
+      </div>
+      <div class="dcard"><div class="dh"><b>공공 정산관리시스템 · FMS 차량평가 플랫폼 제안</b><span class="bd b-prop">공공/제품</span></div>
+        <ul><li>준공영제 운송원가 산정·보조금 집행(운행대수·교통카드·배차·인건비 통합, BMS 연계)</li><li>ERP+FMS+정산 통합·배차 최적화·운전행태·예방정비</li></ul>
+      </div>
+      <div class="dcard"><div class="dh"><b>2026 DTG 점검센터 운영 용역 정성제안서</b><span class="bd b-doc">공공입찰</span></div>
+        <ul><li>한국교통안전공단 발주 — 점검센터 18개소·출장·콜센터, 폐업 제조사 DTG 무상 점검·수리·교체</li><li>혁신제품 「모빌하이」 기반 디지털화, 장기계속계약(~2027.04), 정성 7개 평가항목 점수 배분 전략</li></ul>
+      </div>
+      <div class="dcard"><div class="dh"><b>요구사항정의서·화면설계·메뉴구조도</b><span class="bd b-ba">업무분석(BA)</span></div>
+        <ul><li>푸른솔관광 WEB/APP v2.0 요구사항정의서(부가세·급여명세·정산-외주·휴가신청)</li><li>그룹웨어 메뉴 구성 질문서(작업접수→지시서→일지·상태값·권한), 모빌하이 기능구성도, SNS 로그인 설계</li></ul>
+      </div>
+      <div class="dcard"><div class="dh"><b>모빌하이 서비스소개서·세일즈킷 · 사용가이드</b><span class="bd b-sales">세일즈·문서화</span></div>
+        <ul><li>타깃별 소개서 다버전·리플렛·요금표(혁신제품 지정·조달청 등록), 그룹웨어 사용가이드(웹+모바일 59p), 매뉴얼·패치노트·CS 내역</li></ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>핵심 역량 · 담당 고객사</h2>
+      <div class="scope" style="margin-bottom:12px">
+        <span class="tag2">Product Owner(기획+개발)</span><span class="tag2">UI/UX·디자인 시스템</span><span class="tag2">프로젝트 관리(PM·WBS)</span><span class="tag2">풀스택(Django·React·Flutter)</span>
+        <span class="tag2">모빌리티 도메인</span><span class="tag2">B2B 제안·계약</span><span class="tag2">정부조달(혁신제품·나라장터)</span><span class="tag2">운영·CS·문서화</span>
+      </div>
+      <div class="scope">
+        <span class="tag2">범일운수</span><span class="tag2">화성도시공사</span><span class="tag2">춘천시민버스</span><span class="tag2">공항버스</span><span class="tag2">성남시내버스</span>
+        <span class="tag2">강진교통</span><span class="tag2">신흥운수/신흥교통</span><span class="tag2">제천운수</span><span class="tag2">진양교통</span><span class="tag2">동신운수</span>
+        <span class="tag2">전주(성진·제일·전일·호남)</span><span class="tag2">서울 마을버스조합·번창교통</span><span class="tag2">인천그린모빌리티</span><span class="tag2">푸른솔관광·제일렌트카</span><span class="tag2">에이아이정보기술</span>
+      </div>
+    </section>
+
+    <div class="note">※ 프로젝트·고객사명은 실제 담당 이력이며, 기능·역할은 본인이 작성한 문서와 개발 내역 기반입니다. 외부 제출 시 익명화 버전으로 조정 가능하며, 계약금액·개인정보 등 민감정보는 포함하지 않았습니다.</div>
+
+  </div>
+  <footer>
+    <span>장소현 · Product Manager & Full-stack Engineer · ㈜서울소프트</span>
+    <span>Portfolio · 2024–2026</span>
+  </footer>
+</div>
