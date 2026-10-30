@@ -1,34 +1,39 @@
-import { documentsData, disclaimerNote } from "@/data/portfolio";
+import { documentsData, disclaimerNote, sideProject } from "@/data/portfolio";
 
-/** 07. BUSINESS & DOCUMENTATION — 직접 제작한 제안·조달·기획 산출물 */
+/** 산출물(토글) + 사이드 프로젝트 */
 export default function Documents() {
   return (
-    <section className="sec" id="documents">
-      <div className="container">
-        <header className="sec-head">
-          <span className="sec-num">06</span>
-          <h2>제안 · 조달 · 기획 산출물</h2>
-          <p>개발 외에 직접 작성한 문서들입니다. 외부 공개가 가능한 범위에서 정리했습니다.</p>
-        </header>
+    <>
+      <section id="documents">
+        <h2 className="n-h2">📄 제안·조달·기획 산출물</h2>
+        {documentsData.map((d) => (
+          <details key={d.title} className="n-toggle">
+            <summary>{d.title}</summary>
+            <ul className="n-list">
+              {d.items.map((it) => (
+                <li key={it}>{it}</li>
+              ))}
+            </ul>
+          </details>
+        ))}
+        <p className="n-muted small" style={{ marginTop: 16 }}>
+          {disclaimerNote}
+        </p>
+      </section>
 
-        <div className="doc-grid">
-          {documentsData.map((d) => (
-            <article key={d.title} className="doc">
-              <div className="doc-head">
-                <b>{d.title}</b>
-                <span className={`badge b-${d.badgeType}`}>{d.badge}</span>
-              </div>
-              <ul className="list">
-                {d.items.map((it) => (
-                  <li key={it}>{it}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
+      <section id="side">
+        <h2 className="n-h2">🌱 사이드 프로젝트</h2>
+        <div className="n-card">
+          <b>{sideProject.title}</b>
+          <span className="n-muted small">{sideProject.meta}</span>
+          <p className="n-small">{sideProject.desc}</p>
+          <ul className="n-list">
+            {sideProject.items.map((it) => (
+              <li key={it}>{it}</li>
+            ))}
+          </ul>
         </div>
-
-        <p className="note">{disclaimerNote}</p>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

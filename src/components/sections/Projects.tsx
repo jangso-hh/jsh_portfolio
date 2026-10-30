@@ -1,138 +1,116 @@
 import Zoom from "@/components/ui/Zoom";
-import { featuredProjects, moreProjects, type DetailBlock } from "@/data/portfolio";
+import { devProjects, erpOthers, erpOthersIntro, type Toggle } from "@/data/portfolio";
 import { em } from "@/lib/em";
 
-function Details({ blocks }: { blocks?: DetailBlock[] }) {
-  if (!blocks?.length) return null;
+function Toggles({ items }: { items?: Toggle[] }) {
+  if (!items?.length) return null;
   return (
-    <details className="more">
-      <summary>상세 내용</summary>
-      {blocks.map((b) => (
-        <div key={b.label} className="more-block">
-          <b>{b.label}</b>
-          <ul>
-            {b.items.map((it) => (
+    <>
+      {items.map((t) => (
+        <details key={t.title} className="n-toggle">
+          <summary>{t.title}</summary>
+          <ul className="n-list">
+            {t.items.map((it) => (
               <li key={it}>{em(it)}</li>
             ))}
           </ul>
-        </div>
+        </details>
       ))}
-    </details>
+    </>
   );
 }
 
-/** 03. SELECTED PROJECTS — 대표 3건(이미지 중심) + 그 외 프로젝트(컴팩트) */
+/** 개발 프로젝트 — 노션 하위 페이지처럼 한 블록씩 */
 export default function Projects() {
   return (
-    <section className="sec" id="projects">
-      <div className="container">
-        <header className="sec-head">
-          <span className="sec-num">02</span>
-          <h2>대표 프로젝트</h2>
-          <p>기획부터 운영까지 직접 맡은 세 건입니다. 상세 내용은 각 카드 아래에서 펼쳐 볼 수 있습니다.</p>
-        </header>
+    <section id="projects">
+      <h2 className="n-h2">🛠 개발한 것들</h2>
+      <p className="n-muted">직접 코드를 쓴 프로젝트입니다. 위에서부터 비중이 큰 순서예요.</p>
 
-        {featuredProjects.map((p) => (
-          <article key={p.num} className="fp">
-            <div className="fp-head">
-              <span className="fp-num">PROJECT {p.num}</span>
-              <h3>{p.title}</h3>
-              <p className="fp-tagline">{p.tagline}</p>
-              <span className="fp-period">{p.period}</span>
-            </div>
+      {devProjects.map((p) => (
+        <article key={p.title} className="n-project">
+          <h3 className="n-h3">
+            <span className="n-emoji">{p.icon}</span>
+            {p.title}
+          </h3>
+          <p className="n-oneliner">{p.oneLiner}</p>
 
-            {p.shots?.map((s) => (
-              <figure key={s.src} className="fp-shot">
-                <Zoom src={s.src} alt={s.caption} />
-                <figcaption>{s.caption}</figcaption>
-              </figure>
+          <dl className="n-props">
+            {p.props.map((x) => (
+              <div key={x.k}>
+                <dt>{x.k}</dt>
+                <dd>{x.v}</dd>
+              </div>
             ))}
-            {p.beforeAfter && (
-              <figure className="fp-shot">
-                <div className="ba">
-                  <div className="ba-col">
-                    <span className="ba-label old">BEFORE</span>
-                    <Zoom src={p.beforeAfter.before} alt="기존 UI" sizes="(max-width: 720px) 100vw, 520px" />
-                  </div>
-                  <div className="ba-col">
-                    <span className="ba-label new">AFTER</span>
-                    <Zoom src={p.beforeAfter.after} alt="리디자인 UI" sizes="(max-width: 720px) 100vw, 520px" />
-                  </div>
-                </div>
-                <figcaption>{p.beforeAfter.caption}</figcaption>
-              </figure>
-            )}
+          </dl>
 
-            <div className="fp-grid">
-              <div>
-                <h4>프로젝트 개요</h4>
-                <p className="fp-overview">{em(p.overview)}</p>
-                <h4>담당 역할</h4>
-                <div className="chips">
-                  {p.roles.map((r) => (
-                    <span key={r} className="chip role">
-                      {r}
-                    </span>
-                  ))}
+          {p.shots?.map((s) => (
+            <figure key={s.src} className={`n-fig${s.kind === "mobile" ? " mobile" : ""}`}>
+              <Zoom src={s.src} alt={s.caption} sizes={s.kind === "mobile" ? "260px" : "(max-width: 760px) 100vw, 720px"} />
+              <figcaption>{s.caption}</figcaption>
+            </figure>
+          ))}
+          {p.beforeAfter && (
+            <figure className="n-fig">
+              <div className="n-ba">
+                <div>
+                  <span className="n-ba-label">Before</span>
+                  <Zoom src={p.beforeAfter.before} alt="기존 UI" sizes="360px" />
+                </div>
+                <div>
+                  <span className="n-ba-label after">After</span>
+                  <Zoom src={p.beforeAfter.after} alt="리디자인 UI" sizes="360px" />
                 </div>
               </div>
-              <div>
-                <h4>주요 구현 내용</h4>
-                <ul className="list">
-                  {p.highlights.map((h) => (
-                    <li key={h}>{em(h)}</li>
-                  ))}
-                </ul>
-                <h4>성과 및 결과</h4>
-                <ul className="list result">
-                  {p.results.map((r) => (
-                    <li key={r}>{em(r)}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+              <figcaption>{p.beforeAfter.caption}</figcaption>
+            </figure>
+          )}
 
-            <div className="chips stack">
-              {p.stack.map((s) => (
-                <span key={s} className="chip">
-                  {s}
-                </span>
-              ))}
-            </div>
-            <Details blocks={p.details} />
+          <p className="n-p">{em(p.summary)}</p>
+
+          <h4 className="n-h4">만든 것</h4>
+          <ul className="n-list">
+            {p.built.map((b) => (
+              <li key={b}>{em(b)}</li>
+            ))}
+          </ul>
+
+          <Toggles items={p.toggles} />
+
+          <div className="n-tags">
+            {p.stack.map((s) => (
+              <span key={s} className="n-tag">
+                {s}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+
+      <h3 className="n-h3" id="erp-others">
+        <span className="n-emoji">🗂</span>
+        다른 운수사 ERP 개발 사례
+      </h3>
+      <p className="n-p">{em(erpOthersIntro)}</p>
+      <div className="n-grid2">
+        {erpOthers.map((e) => (
+          <article key={e.name} className="n-card">
+            <figure className="n-fig tight">
+              <Zoom src={e.image} alt={`${e.name} 대시보드`} sizes="(max-width: 760px) 100vw, 350px" />
+            </figure>
+            <b>{e.name}</b>
+            <span className="n-muted small">{e.scale}</span>
+            <p className="n-small">{e.summary}</p>
+            <details className="n-toggle">
+              <summary>작업 내용</summary>
+              <ul className="n-list">
+                {e.items.map((it) => (
+                  <li key={it}>{it}</li>
+                ))}
+              </ul>
+            </details>
           </article>
         ))}
-
-        <h3 className="sub-title">그 외 프로젝트</h3>
-        <div className="mp-grid">
-          {moreProjects.map((m) => (
-            <article key={m.title} className={`mp${m.side ? " side" : ""}${m.shot?.kind === "mobile" ? " with-phone" : ""}`}>
-              {m.shot && (
-                <figure className={`mp-shot ${m.shot.kind ?? "web"}`}>
-                  <Zoom src={m.shot.src} alt={m.shot.caption} sizes="(max-width: 720px) 100vw, 480px" />
-                </figure>
-              )}
-              <div className="mp-body">
-                <span className="mp-meta">{m.meta}</span>
-                <h4>{m.title}</h4>
-                <p className="mp-tagline">{m.tagline}</p>
-                <ul className="list">
-                  {m.highlights.map((h) => (
-                    <li key={h}>{em(h)}</li>
-                  ))}
-                </ul>
-                <div className="chips">
-                  {m.stack.map((s) => (
-                    <span key={s} className="chip">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-                <Details blocks={m.details} />
-              </div>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   );

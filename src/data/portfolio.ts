@@ -513,427 +513,351 @@ export const contactData: ContactData = {
 };
 
 /* =========================================================================
- * 12. 화면 구성 데이터 — 페이지의 8개 섹션이 아래 export를 그대로 그린다.
+ * 12. 화면 구성 데이터 — 노션 문서형 레이아웃. 아래 export를 페이지가 위에서부터 그린다.
  *     문자열 안의 **…** 는 <b>로 렌더링된다. (src/lib/em.tsx)
- *     ※ 고객사·제품명은 비공개 원칙에 따라 업종·규모로만 표기한다.
+ *     ※ 고객사·자사 제품명은 비공개 원칙에 따라 업종·규모로만 표기한다.
  * ====================================================================== */
 
-/* ---------- 01. HERO ---------- */
-
-export interface HeroCapability {
-  title: string;
-  desc: string;
+export interface Prop {
+  k: string;
+  v: string;
 }
-
-export const heroData = {
-  title: "제품을 기획하고, 직접 구현하며,\n운영까지 연결하는 Product Manager",
-  subtitle:
-    "서비스 기획부터 프로젝트 관리, UI/UX 설계, 풀스택 개발까지.\n비즈니스와 기술을 연결해 실제 사용되는 제품을 만들어 왔습니다.",
-  who: "장소현 · ㈜서울소프트 개발3팀(모빌리티팀) · PM & Full-stack Engineer",
-  capabilities: [
-    {
-      title: "Product Planning & PM",
-      desc: "요구사항 분석, 서비스 기획, 프로젝트 일정 및 품질 관리",
-    },
-    {
-      title: "UI/UX Design",
-      desc: "업무 시스템 설계, 디자인 시스템 구축, 사용자 경험 개선",
-    },
-    {
-      title: "Full-stack Development",
-      desc: "웹·모바일·백엔드 개발 및 실제 서비스 운영",
-    },
-  ] as HeroCapability[],
-  tech: ["Python · Django", "React · TypeScript", "Flutter", "Figma"],
-  /** 이력서 파일을 public/ 에 넣고 경로를 지정하면 버튼이 나타난다. 비우면 숨김. */
-  resume: "",
-};
-
-/* ---------- 02. CORE CAPABILITIES ---------- */
-
-export interface Capability {
-  num: string;
-  title: string;
-  lead: string;
-  items: string[];
-}
-
-export const capabilitiesData: Capability[] = [
-  {
-    num: "01",
-    title: "Product Planning & Project Management",
-    lead: "운수사 ERP 제품군의 **요구사항 정의부터 화면 설계, 일정·품질 관리**까지 맡아 왔습니다. 제안·견적·계약과 정부조달 업무도 직접 수행합니다.",
-    items: [
-      "사용자 및 현업 요구사항 분석",
-      "서비스 구조 및 기능 정의",
-      "메뉴 구조도 및 화면 설계",
-      "Figma 기반 UI/UX 기획",
-      "WBS 및 일정 관리",
-      "개발 리소스와 진척도 관리",
-      "고객사 및 개발팀 간 커뮤니케이션",
-      "제안서, 견적서, 계약 및 조달 업무",
-    ],
-  },
-  {
-    num: "02",
-    title: "UI/UX & Product Design",
-    lead: "노후화된 ERP 제품군 전체를 **하나의 디자인 시스템으로 전면 리디자인**했습니다. 데이터 대시보드와 브랜드별 커스터마이징까지 혼자 설계합니다.",
-    items: [
-      "ERP 및 업무 시스템 UI/UX 전면 리디자인",
-      "디자인 시스템 및 공통 컴포넌트 구축",
-      "데이터 대시보드 및 시각화",
-      "사용자 중심의 정보 구조 개선",
-      "브랜드별 디자인 커스터마이징",
-      "Figma 기반 프로토타이핑 및 화면 설계",
-    ],
-  },
-  {
-    num: "03",
-    title: "Full-stack Development",
-    lead: "Django·React·Flutter로 **웹·앱·백엔드를 직접 구현하고 배포·운영**합니다. 외부 장비·벤더 데이터 연동과 권한 체계 설계까지 다룹니다.",
-    items: [
-      "Python / Django 기반 백엔드",
-      "React / TypeScript 기반 프론트엔드",
-      "JavaScript / SCSS",
-      "Flutter 기반 모바일 앱",
-      "REST API 및 외부 시스템 연동",
-      "데이터베이스 및 권한 체계 설계",
-      "자동화 및 데이터 시각화",
-    ],
-  },
-];
-
-/* ---------- 03. SELECTED PROJECTS ---------- */
 
 export interface Shot {
   src: string;
   caption: string;
-  /** mobile 은 폰 비율로 좁게 표시 */
   kind?: "web" | "mobile";
 }
 
-export interface DetailBlock {
-  label: string;
+export interface Toggle {
+  title: string;
   items: string[];
 }
 
-export interface FeaturedProject {
-  num: string;
+/* ---------- 페이지 머리 ---------- */
+
+export const pageData = {
+  icon: "🧑‍💻",
+  title: "장소현",
+  subtitle: "Full-stack Developer & Product Manager · 모빌리티 ERP",
+  intro:
+    "운수사 ERP·그룹웨어·모바일 앱을 **백엔드부터 프론트, 모바일까지 직접 개발**합니다. 요구사항 정의와 화면 설계, 일정 관리도 같이 하기 때문에 기획이 코드로 옮겨지는 동안 생기는 번역 손실이 없습니다. AI 코딩 도구를 일상 개발에 쓰고, 그만큼 빠르게 프로덕션에 올립니다.",
+  props: [
+    { k: "소속", v: "㈜서울소프트 개발3팀(모빌리티팀) · 2024.06 ~" },
+    { k: "역할", v: "Full-stack Engineer · PM · UI/UX" },
+    { k: "주력 스택", v: "Python/Django · React/TypeScript · Flutter · JavaScript/SCSS" },
+    { k: "도메인", v: "모빌리티 ERP (배차·수입금·급여·회계·정비·자재·인사·안전·DTG·음주측정)" },
+  ] as Prop[],
+};
+
+/* ---------- 한눈에 보기 ---------- */
+
+export const glanceData = {
+  callout: "**PM이면서 직접 만드는 개발자.** 아래 프로젝트는 전부 코드를 직접 썼고, 그중 절반은 혼자 끝까지 만들었습니다.",
+  stats: [
+    { k: "운수사 ERP", v: "6개 제품군 · 전 모듈 개발 참여" },
+    { k: "단독 구축", v: "그룹웨어 1종 · 음주측정 웹+앱 1종" },
+    { k: "스토어 출시 앱", v: "2종 (iOS · Android)" },
+    { k: "외부 연동", v: "DTG 벤더 · 음주측정기 · BLE · GPS" },
+  ] as Prop[],
+};
+
+/* ---------- 개발 프로젝트 ---------- */
+
+export interface DevProject {
+  icon: string;
   title: string;
-  tagline: string;
-  period: string;
+  oneLiner: string;
+  props: Prop[];
   shots?: Shot[];
   beforeAfter?: { before: string; after: string; caption: string };
-  overview: string;
-  roles: string[];
-  highlights: string[];
-  results: string[];
+  summary: string;
+  built: string[];
+  toggles?: Toggle[];
   stack: string[];
-  details: DetailBlock[];
 }
 
-export const featuredProjects: FeaturedProject[] = [
+export const devProjects: DevProject[] = [
   {
-    num: "01",
-    title: "운수종사자 음주측정 준법 관리 서비스",
-    tagline: "규제 대응이 필요한 현장 업무를 웹 + 앱 서비스로 전환",
-    period: "2026 · 기획부터 배포까지 단독",
+    icon: "🚌",
+    title: "운수사 ERP — 메인 제품 (운수사 ERP B)",
+    oneLiner: "시내버스 운수사 ERP의 전 모듈 개발 + UI/UX 전면 리뉴얼 + 외부 연동",
+    props: [
+      { k: "기간", v: "2025 ~ 현재" },
+      { k: "역할", v: "전 모듈 개발 · 디자인 시스템 · 요구사항 정의" },
+      { k: "담당 범위", v: "배차 · 수입금 · 급여 · 회계 · 정비 · 자재 · 인사 · 안전 · 경영분석 · 권한" },
+      { k: "팀", v: "모빌리티팀 (메인 개발)" },
+    ],
     shots: [
+      { src: "/images/projects/seongnam.jpg", caption: "리뉴얼한 메인 대시보드 — KPI 타일 · 재직자 입사 현황 · 운전직 구성" },
+    ],
+    summary:
+      "제가 가장 오래, 가장 넓게 만진 제품입니다. 수년간 쌓인 Django 모놀리식 ERP의 **전 모듈을 직접 개발·개편**했고, UI 전체를 새 디자인 시스템으로 바꿨습니다. 이 제품에 DTG 관제, 외부 음주측정기 연동, 현장 업무 앱이 붙습니다.",
+    built: [
+      "**UI/UX 전면 리뉴얼** — bento 대시보드, 사이드바 폴딩, 브랜드 팔레트, 로그인 재설계, KPI 타일 시각화. 조회필터·테이블·출력/엑셀 버튼을 전역 표준화",
+      "**메뉴 권한(RBAC) 일괄 적용** — 다중선택 + 부서·영업소·직군 필터, 권한 적용 성능 개선",
+      "**급여·인사 고도화** — 운수직명단 고정헤더, 급여소급, 4대보험·소득세 간이세액표 정산, 사원별 교육관리",
+      "**DTG 운행기록 수신·차량정시성 관제** — 벤더 DB 뷰 증분 수집기(10초 주기·8스레드), 실시간 현황·회차 정시성·운행이력 화면",
+      "**외부 음주측정기 API 연동** — 20초 폴링 증분 수신, 사번 기준 사원 매칭(662명 중 349명 다중 레코드), 점호부 현황판·확인서",
+      "**현장 업무 앱(Flutter) 메인 개발** — 디자인 시스템 + 직군별 홈 4종, 50여 화면, 양대 스토어 출시 (아래 별도 항목)",
+    ],
+    toggles: [
       {
-        src: "/images/projects/driveon.jpg",
-        caption: "관리자 통합 대시보드 — 실시간 측정 현황 · 장비 연결 · 미측정자 관리",
+        title: "DTG 연동 상세",
+        items: [
+          "뷰 전체 컬럼 보존·92일 보관·차량별 최신 상태 테이블로 재설계",
+          "실측 대조 후 거리 컬럼 매핑, 급가감속·브레이크 시간 보존, 가속도 기준선 보정, 빈 컬럼 제거",
+          "실시간 현황(운행·정차·입고·미수신, 가까운 정류장+거리), 정류장 통과, 일별 요약, 노선도 — 일별 배차와 결합",
+          "같은 FMS 모듈을 운수사 A에도 벤더 차이를 흡수해 적용. 운수사 C의 8대 210일 원본(SQLite 13GB·6,500만 건) 분석",
+        ],
+      },
+      {
+        title: "음주측정기 연동 상세",
+        items: [
+          "건수 API가 늘었을 때만 새 기록 수신, 화면 요청과 분리해 뒷단(30초)에서 보충, 서버 불가 시 10분 차단",
+          "측정 사진은 받아 둔 것만 썸네일, 없는 건 그 줄이 보일 때 뒷단에서 보충",
+          "노선·차량은 일별 배차 → 배차 기준표(A·B조) → 최근 1년 배차 → 인사정보 순 폴백",
+          "현황판·확인서는 측정기 회사(사업자번호) 기준, 목록은 기사 소속 기준으로 분리. 양성 알림 담당자 3자리 지정·발송, 엑셀",
+        ],
       },
     ],
-    overview:
-      "여객자동차법 개정으로 운수종사자 음주확인과 3년 기록보관이 의무화됐지만, 현장은 수기 관리에 머물러 있었습니다. **측정 → 서버 전송 → 운행 승인·차단**까지 한 흐름으로 묶는 서비스를 혼자 기획·설계·구현했습니다.",
-    roles: ["서비스 기획", "UI/UX 디자인", "관리자 웹 개발", "Flutter 앱 개발", "배포·운영"],
-    highlights: [
-      "블루투스 음주측정기 + 지문/캠 본인확인 연동, PASS/FAIL 운행 승인·차단 파이프라인",
-      "관리자 웹: 실시간 측정 현황판, 지각·미측정자 관리, 노선·차량·직종 필터, PDF·Excel 리포트",
-      "기사 앱: 블루투스 측정, 지도 기반 차량 실시간 위치(OSM), GPS 출퇴근, 배차 확인",
+    stack: ["Python", "Django", "MySQL", "JavaScript", "SCSS", "htmx", "REST API", "멀티스레드", "Leaflet/OSM", "RBAC"],
+  },
+  {
+    icon: "🧰",
+    title: "현장·작업 관리 통합 그룹웨어",
+    oneLiner: "현장 서비스 기업의 기간 시스템 — 배포만 빼고 백엔드·프론트·모바일 전부 직접 구현",
+    props: [
+      { k: "기간", v: "2025 ~ 운영 중" },
+      { k: "역할", v: "기획 · UI 디자인 · 백엔드 · 프론트엔드 · 모바일 웹 · 운영" },
+      { k: "담당 범위", v: "전체 (배포 제외)" },
+      { k: "팀", v: "단독" },
+    ],
+    shots: [{ src: "/images/projects/aiit.jpg", caption: "대시보드 — 작업 현황 KPI · 출퇴근 · 게시판 · 월간 일정" }],
+    summary:
+      "접수 → 지시 → 작업일지가 엑셀과 수기로 흩어져 있던 회사의 업무를 분석해 **상태값 기반 워크플로우**로 다시 설계하고, 데이터 모델부터 화면, 현장 기사용 모바일 웹까지 혼자 만들었습니다. 지금도 그 회사가 매일 쓰고 있습니다.",
+    built: [
+      "**워크플로우 엔진** — 접수 → 작업지시서 → 직원·차량 배정 → 현장 작업(사진·자재·서명) → 결과보고·고객확인 → 승인·완료",
+      "**전자결재·근태·연차·간트**, 조직도, 고객 → 현장 → 장비 마스터, 역할 기반 권한(RBAC)",
+      "**차량 운행일지**(GPS·주행거리·유류비)·통계·인쇄 서식",
+      "**현장 기사용 모바일 웹 전체**를 별도 구축 — 데스크탑과 실시간 연동, 사진 촬영·서명 입력",
+      "긴급 AS·오늘 예정·미완료/보류·이번 달 완료 KPI, 월간 캘린더(점검·AS·영업·출장), 공지·전사게시판",
+    ],
+    toggles: [
+      {
+        title: "운영·문서",
+        items: ["그룹웨어 사용가이드(웹+모바일 59p) 직접 작성", "메뉴 구성 질문서(작업접수 → 지시서 → 일지·상태값·권한)로 요구사항 수집"],
+      },
+    ],
+    stack: ["Python", "Django", "JavaScript", "SCSS", "반응형 모바일 웹", "전자결재", "RBAC", "GPS"],
+  },
+  {
+    icon: "🍺",
+    title: "운수종사자 음주측정 준법 서비스 — 웹 + 앱",
+    oneLiner: "블루투스 측정기 → 서버 → 운행 승인/차단까지, 기획부터 배포까지 단독",
+    props: [
+      { k: "기간", v: "2026" },
+      { k: "역할", v: "기획 · UI/UX · 관리자 웹 · Flutter 앱 · 배포" },
+      { k: "담당 범위", v: "전체" },
+      { k: "팀", v: "단독" },
+    ],
+    shots: [{ src: "/images/projects/driveon.jpg", caption: "관리자 통합 대시보드 — 실시간 측정 현황 · 장비 연결 · 미측정자" }],
+    summary:
+      "여객자동차법 개정으로 음주확인·3년 기록보관이 의무화됐지만 현장은 수기였습니다. 하드웨어(BLE 측정기·지문/캠)와 웹·앱을 한 파이프라인으로 묶은 서비스를 혼자 만들었고, 회사의 음주측정 키오스크 사업과 실제로 연계됩니다.",
+    built: [
+      "**측정 파이프라인** — BLE 음주측정기 + 지문/캠 본인확인 → 서버 전송 → PASS/FAIL 운행 승인·차단",
+      "**관리자 웹(React·TS)** — 실시간 측정 현황판, 지각·미측정자 관리, 노선·차량·직종 필터, PDF·Excel 리포트, 문의게시판·개인알림",
+      "**기사 앱(Flutter)** — 블루투스 측정, 지도 기반 차량 실시간 위치(OSM·역지오코딩), GPS 출퇴근, 배차 확인·측정기록",
       "웹 Vercel 배포, iOS·Android 빌드 구성",
     ],
-    results: [
-      "규제 도메인 + 하드웨어(BLE) 연동 + 웹·모바일 풀스택을 단독으로 완성",
-      "회사의 음주측정 키오스크 사업과 실제로 연계되는 소프트웨어",
-    ],
     stack: ["React", "TypeScript", "Python", "Flutter/Dart", "Bluetooth(BLE)", "OSM·GPS", "PDF/Excel", "Vercel"],
-    details: [
-      {
-        label: "세부 기능",
-        items: [
-          "측정 사진·시각·결과를 서버에 저장하고 3년 보관 요건에 맞춘 기록 구조",
-          "문의게시판·개인알림, 운행 예정·측정 완료·정상 패스·운행 중 상태 집계",
-          "시간대별 측정 참여도, 금주 측정 추이 차트",
-        ],
-      },
-    ],
   },
   {
-    num: "02",
-    title: "현장·작업 관리 통합 그룹웨어",
-    tagline: "흩어진 현장 서비스 업무를 하나의 워크플로우 시스템으로",
-    period: "2025 ~ 운영 중 · 현장 서비스 기업 맞춤 구축",
+    icon: "📱",
+    title: "운수사 현장 업무 앱 (Flutter)",
+    oneLiner: "승무원·사무·정비·충전시설 담당용 앱 — 한 달 안에 50여 화면 재구성, iOS/Android 출시",
+    props: [
+      { k: "기간", v: "2026.09 ~ 10 · v1.0.0 출시" },
+      { k: "역할", v: "UI/UX 디자인 시스템 · 화면·기능 구현 · 스토어 출시" },
+      { k: "담당 범위", v: "메인 개발 (기반 코드·빌드 환경 1인 + 본인)" },
+      { k: "팀", v: "2인" },
+    ],
+    shots: [{ src: "/images/projects/app_home_main.jpg", caption: "승무원 홈 (스토어 등록 화면)", kind: "mobile" }],
+    summary:
+      "메인 ERP 도입과 함께 필요해진 현장 앱입니다. 기존 앱 코드 위에서 디자인 토큰 기반 디자인 시스템을 새로 세우고, 직군별 홈 4종과 50여 화면을 교체한 뒤 신규 기능을 3차에 걸쳐 붙여 양대 스토어에 올렸습니다.",
+    built: [
+      "**승무원** — 배차 현황, 출퇴근(위치 기록·차량 QR), 운행일지, 출근 차량 4면 점검, 근로시간·휴가·급여명세",
+      "**정비** — Repair Order 접수→작업→승인, 차량 QR 정비이력, 검차·세차·검사 만료, 자재 재고·입출고",
+      "**안전보건·전기버스** — 기계·기구 QR 점검표, 산업재해, 충전소 현황·설비 이상 접수, 월 충전량 통계, 전자결재 4종",
+      "**공용 컴포넌트** — QR/바코드 스캐너, 사진 업로드, 터치 서명, 음성 입력, 화면 캡처 방지(FLAG_SECURE), 태블릿 레이아웃",
+      "**출시 자동화** — App Store Connect API로 메타데이터·스크린샷·심사정보·빌드 제출, 스토어 스크린샷 생성 스크립트, Play 심사 거부 원인 수정 후 재제출",
+    ],
+    toggles: [{ title: "기타", items: ["Android R8·iOS 디바이스 설정, 런처 아이콘", "회사 앱스토어 계정·서명키·GitHub 권한 관리 담당"] }],
+    stack: ["Flutter/Dart", "GetX", "REST API", "Firebase(FCM)", "QR/바코드", "Geolocator", "fl_chart", "App Store Connect API"],
+  },
+  {
+    icon: "🏢",
+    title: "사내 그룹웨어 — 거의 모든 모듈 개편",
+    oneLiner: "인사·개발평가, 영업관리, 사업관리, 전자결재, WBS까지 사내 시스템을 다시 만듦",
+    props: [
+      { k: "기간", v: "2026" },
+      { k: "역할", v: "신규 모듈 설계·구축 · 기존 모듈 개편" },
+      { k: "담당 범위", v: "인사/개발평가 · 영업관리 · 사업관리 · 전자결재 · WBS · 권한 · 대시보드" },
+      { k: "팀", v: "주력 개발" },
+    ],
     shots: [
-      {
-        src: "/images/projects/aiit.jpg",
-        caption: "그룹웨어 대시보드 — 작업 현황 · 출퇴근 · 게시판 · 월간 일정",
-      },
+      { src: "/images/projects/groupware.jpg", caption: "GitHub 업무분석/평가 — 커밋 자동 수집 · 팀 리더보드" },
+      { src: "/images/projects/groupware2.jpg", caption: "활동 추세 · 작업 카테고리 분포 · 시간대/요일 커밋 · 히트맵" },
     ],
-    overview:
-      "접수 → 지시 → 작업일지로 이어지는 현장 업무가 엑셀과 수기로 흩어져 이력 추적과 정산이 어려웠습니다. 업무 프로세스를 분석해 **상태값 기반 워크플로우**로 재설계하고, 전자결재·근태·권한까지 하나의 시스템으로 구축했습니다.",
-    roles: ["업무 프로세스 분석", "워크플로우 설계", "UI 디자인", "풀스택 개발", "모바일 웹", "운영·유지보수"],
-    highlights: [
-      "접수 → 작업지시서 → 직원·차량 배정 → 현장 작업(사진·자재·서명) → 결과보고·고객확인 → 승인·완료",
-      "전자결재·근태·연차·간트, 조직도, 고객 → 현장 → 장비 마스터",
-      "역할 기반 권한(RBAC), 차량 운행일지(GPS·주행거리·유류비)·통계·인쇄 서식",
-      "현장 기사용 모바일 웹을 별도 구축, 데스크탑과 실시간 연동",
+    summary:
+      "개발 진척·성과·정부지원사업 데이터를 수기로 모으던 회사 내부 시스템입니다. 필요한 도구를 직접 발굴해서 만들었고, 그 과정에서 그룹웨어의 거의 모든 모듈을 새로 짰습니다.",
+    built: [
+      "**GitHub 업무분석·개발평가** — 웹훅으로 커밋 자동 수집, 담당자별 작업현황·14일 추이 KPI, 카테고리 분포·시간대/요일 히트맵, 레이더 평가",
+      "**WBS 관리** — 간트차트에 커밋을 키워드 토큰·모듈 별칭으로 자동 매칭, 진행보고서 생성",
+      "**사업관리(정부지원사업)** — 엑셀형 인라인 편집 그리드(드래그 정렬·컬럼 고정·우클릭 메뉴), 점수 통계·가중치, PDF/인쇄, 엑셀 업/다운",
+      "**영업관리·계약서 보관함**, 전자결재(복사 후 재작성), 인사 모듈, 메뉴 권한 관리, 대시보드 리디자인",
     ],
-    results: [
-      "한 회사가 매일 실제로 쓰는 기간 시스템 — 데모가 아닌 라이브 레퍼런스",
-      "기획부터 운영까지 전 과정을 단독으로 수행",
-    ],
-    stack: ["Python/Django", "JavaScript", "SCSS", "반응형 모바일 웹", "전자결재", "RBAC", "GPS"],
-    details: [
-      {
-        label: "세부 기능",
-        items: [
-          "긴급 AS·오늘 예정·미완료/보류·이번 달 완료 KPI와 월간 캘린더(점검·AS·영업·출장 분류)",
-          "출퇴근 등록과 일/주 근무시간 집계, 공지·전사게시판",
-          "그룹웨어 사용가이드(웹+모바일 59p) 직접 작성",
-        ],
-      },
-    ],
+    stack: ["Django", "JavaScript", "SCSS", "GitHub 웹훅", "간트·WBS", "인라인 편집 그리드", "RBAC", "PDF/Excel"],
   },
   {
-    num: "03",
-    title: "모빌리티 ERP 전면 리디자인 및 기능 개발",
-    tagline: "운영 중인 대규모 ERP 제품군의 디자인 개선과 신규 기능 개발을 함께",
-    period: "2026 · 디자인 리더십 + 풀스택 개발",
+    icon: "🎨",
+    title: "운수사 ERP 제품군 전체 UI/UX 리디자인",
+    oneLiner: "구형 ERP 6개 제품군을 하나의 디자인 시스템으로 — '계약을 만든 디자인'",
+    props: [
+      { k: "기간", v: "2026" },
+      { k: "역할", v: "디자인 시스템 · 전 제품 UI 개편 · 운수사별 브랜딩" },
+      { k: "담당 범위", v: "전 제품군 (단독)" },
+      { k: "성과", v: "영업·데모 차별점 → 신규 계약 수주에 직접 기여" },
+    ],
     beforeAfter: {
       before: "/images/projects/before_old.jpg",
       after: "/images/projects/mobilhi.jpg",
       caption: "정보 나열식 구형 대시보드 → 최신 데이터 대시보드 (전 운수사 동일 기준으로 이식)",
     },
-    overview:
-      "수년간 기능 위주로 누적된 ERP는 영업·데모에서 **'요즘 시스템 같지 않다'**는 인상이 약점이었습니다. 제품군 전체의 UI/UX를 혼자 전면 개편하고, 동시에 배차·급여·회계·정비·자재·인사 영역의 신규 모듈과 백엔드 로직을 개발해 프로덕션에 출시했습니다.",
-    roles: ["UI/UX 리디자인", "디자인 시스템", "신규 모듈 설계·개발", "요구사항 정의", "프로젝트 관리", "고객 커뮤니케이션"],
-    highlights: [
-      "컬러·타이포그래피·카드/버튼/탭/아이콘·조회필터·테이블까지 컴포넌트 표준화",
-      "bento 대시보드 + KPI 타일·도넛/바/라인 차트·히트맵·게이지 시각화, 다크 레일 사이드바",
-      "연료데이터 관리, 메뉴 권한(RBAC), 시설관리 모듈 신규 구축",
-      "급여·4대보험·소득세 정산 로직, 회계 원장 정합성 개선",
-      "운수사별 브랜드 톤앤매너(로고·컬러) 커스터마이징",
+    summary:
+      "영업·데모에서 '요즘 시스템 같지 않다'는 말을 듣던 ERP였습니다. 컬러·타이포·카드/버튼/탭/아이콘·조회필터·테이블까지 컴포넌트를 표준화하고, 플래그십 대시보드를 먼저 만든 뒤 전 운수사에 같은 기준으로 이식했습니다.",
+    built: [
+      "**디자인 시스템** — 팔레트, 타이포그래피(NanumSquare), 컴포넌트 표준, 다크 레일 사이드바·폴딩, 반응형",
+      "**bento 대시보드** + KPI 타일·도넛/바/라인 차트·히트맵·게이지·랭킹 시각화",
+      "**운수사별 브랜드 톤앤매너** — 로고·컬러를 반영한 '우리 회사 전용 시스템' 경험",
+      "실시간 관제·자율주행·디지털 트윈 대시보드(라이브맵·차량 선택) 등 차세대 화면 설계",
     ],
-    results: [
-      "최신 UI가 영업·데모의 차별점이 되어 **신규 계약 수주에 직접 기여**",
-      "플래그십 대시보드가 이후 전 운수사 ERP 이식의 디자인 기준이 됨",
-    ],
-    stack: ["Python", "Django", "JavaScript", "SCSS", "htmx", "REST API", "RBAC", "Figma", "Design System"],
-    details: [
-      {
-        label: "담당 범위",
-        items: [
-          "배차·수입금·급여·회계·정비·자재·인사·경영분석 전 영역 (Python/Django + JS)",
-          "신규 도입 ERP의 요구사항 정의(10개 모듈)·개발방향 수립·배포 협의",
-        ],
-      },
-    ],
+    stack: ["Design System", "UI/UX", "데이터 시각화", "SCSS", "Figma", "반응형", "브랜딩"],
   },
 ];
 
-/* ---------- 03-b. OTHER PROJECTS ---------- */
+/* ---------- 다른 운수사 ERP 개발 사례 ---------- */
 
-export interface MoreProject {
-  title: string;
-  tagline: string;
-  meta: string;
-  side?: boolean;
-  shot?: Shot;
-  highlights: string[];
-  stack: string[];
-  details?: DetailBlock[];
-}
-
-export const moreProjects: MoreProject[] = [
-  {
-    title: "운수사 현장 업무 앱",
-    tagline: "승무원·사무·정비·충전시설 담당용 모바일 앱 — 한 달 안에 재구성하고 양대 스토어 출시",
-    meta: "2026.09 ~ 10 · 2인 팀 메인 개발 · iOS/Android v1.0.0",
-    shot: {
-      src: "/images/projects/app_home_main.jpg",
-      caption: "승무원 홈 (스토어 등록 화면)",
-      kind: "mobile",
-    },
-    highlights: [
-      "디자인 토큰 기반 디자인 시스템 + 직군별 홈 4종, 50여 화면 전면 교체",
-      "배차·출퇴근(위치·차량 QR)·운행일지·정비 RO·안전점검·전기버스 충전 현황",
-      "App Store Connect API로 메타데이터·스크린샷·심사 제출 자동화, Play 심사 거부 대응",
-    ],
-    stack: ["Flutter/Dart", "GetX", "Firebase(FCM)", "QR/바코드", "Geolocator", "App Store Connect API"],
-    details: [
-      {
-        label: "세부 기능",
-        items: [
-          "공용 컴포넌트 — QR/바코드 스캐너, 사진 업로드, 터치 서명, 음성 입력, 화면 캡처 방지, 태블릿 레이아웃",
-          "전자결재 4종·문서함, 일정 캘린더(주/월/년·반복), 열화상 카메라 목록, 월 충전량 통계",
-          "회사 앱스토어 계정·서명키·GitHub 권한 관리 담당",
-        ],
-      },
-    ],
-  },
-  {
-    title: "개발팀 생산성 도구 — 사내 그룹웨어",
-    tagline: "GitHub 커밋을 자동 수집해 업무 분석·WBS·정부지원사업 관리까지",
-    meta: "2026 · 신규 기능 설계·구축",
-    shot: {
-      src: "/images/projects/groupware2.jpg",
-      caption: "활동 추세 · 카테고리 분포 · 시간대/요일 커밋 · 히트맵",
-    },
-    highlights: [
-      "GitHub 웹훅으로 커밋 자동 수집, 담당자별 작업현황 대시보드·14일 추이 KPI",
-      "간트차트에 커밋 자동 매칭(키워드 토큰·모듈 별칭), 진행보고서 생성",
-      "정부지원사업 관리 — 엑셀형 인라인 편집 그리드, 점수 통계·가중치, PDF·엑셀",
-    ],
-    stack: ["Django", "GitHub 웹훅", "간트·WBS", "인라인 편집 그리드", "RBAC"],
-  },
-  {
-    title: "DTG 운행기록 수신 · ERP 연동 (FMS)",
-    tagline: "1초 주기 벤더 데이터를 수집·보정해 차량정시성 관제 화면까지",
-    meta: "2026.03 ~ 10 · 운수사 ERP 3곳 · 설계·개발",
-    highlights: [
-      "벤더 DB 뷰를 차량×날짜 증분으로 가져오는 상주 수집기(10초 주기 · 8스레드), 92일 보관",
-      "실시간 현황·회차 정시성·정류장 통과·운행이력·노선도 관제 화면",
-      "8대 210일 원본(13GB · 6,500만 건) 분석 — 센서 글리치·시각 오류·GPS 미수신 보정 규칙",
-    ],
-    stack: ["Python/Django", "MySQL", "멀티스레드", "Leaflet/OSM", "SQLite"],
-    details: [
-      {
-        label: "세부 내용",
-        items: [
-          "실측 대조 후 거리 컬럼 매핑, 급가감속·브레이크 시간 보존, 가속도 기준선 보정",
-          "주차 차량위치 지도, 앱용 위치 API, 배차간격 현황판, 승무원별 운행시간 월간 탭",
-          "같은 FMS 모듈을 운수사 두 곳에 벤더 차이를 흡수해 적용",
-        ],
-      },
-    ],
-  },
-  {
-    title: "외부 음주측정기 API 연동 — ERP 교통안전관리",
-    tagline: "제조사 서버의 측정 기록을 ERP로 가져와 점호부·확인서까지 한 곳에서",
-    meta: "2026.10 · 단독 설계·개발",
-    highlights: [
-      "건수 API 20초 폴링 + 증분 수신, 백그라운드 보충, 장애 시 10분 차단",
-      "사번 기준 사원 매칭(662명 중 349명 다중 레코드), 배차 → 기준표 → 1년 배차 → 인사 순 폴백",
-      "운전원 점호부 현황판·음주측정 확인서·양성 알림 발송·엑셀",
-    ],
-    stack: ["Python/Django", "외부 REST API", "백그라운드 동기화"],
-    details: [
-      {
-        label: "세부 내용",
-        items: [
-          "측정 사진은 받아 둔 것만 썸네일 표시, 없는 사진은 뒷단에서 보충",
-          "현황판·확인서는 측정기 회사(사업자번호) 기준, 목록은 기사 소속 기준으로 분리",
-        ],
-      },
-    ],
-  },
-  {
-    title: "동네 유휴 자원 연결 앱",
-    tagline: "비어 있는 동네 공간을 '지금 필요한 기능'으로 찾는 서비스 — 중기부 「모두의 창업」 로컬트랙 지원",
-    meta: "SIDE · 예비창업 · 2026.09 제출 · 결과 대기",
-    side: true,
-    highlights: [
-      "문제 정의·기존 서비스 비교·수익 구조·3단계 실행 로드맵",
-      "MVP 화면 목업 5종, 첫 버전 앱(자원 등록·기능 기반 검색·현재 시각 이용 가능 표시) 자체 개발 계획",
-    ],
-    stack: ["서비스 기획", "사업계획", "MVP 설계"],
-  },
-];
-
-/* ---------- 04. PROJECT IMPACT (ERP 제품군) ---------- */
-
-export const impactIntro =
-  "디자인 개편과 동시에, 운영 중인 **운수사 ERP 제품군 전반**에서 신규 모듈·백엔드·대시보드를 개발해 프로덕션에 출시했습니다. 아래는 대표 사례입니다.";
-
-export interface ImpactItem {
+export interface ErpOther {
   name: string;
-  badge: string;
-  badgeType: "main" | "key" | "mod";
   scale: string;
   summary: string;
   items: string[];
   image: string;
 }
 
-export const impactData: ImpactItem[] = [
+export const erpOthersIntro =
+  "메인 제품 외에도 운영 중인 운수사 ERP 제품군 전반에서 **신규 모듈·백엔드 로직·대시보드를 개발**해 프로덕션에 출시했습니다.";
+
+export const erpOthers: ErpOther[] = [
   {
     name: "운수사 ERP A",
-    badge: "UI 개편 + 주요 개발",
-    badgeType: "main",
-    scale: "시내버스 154대 규모",
-    summary: "전반적인 UI 개선 · 연료데이터 관리 · 차량 위치 및 경영 대시보드",
+    scale: "시내버스 154대 · UI 개편 + 주요 개발",
+    summary: "연료데이터 신규 모듈 · 차량 실시간 위치 · 경영/정시성 대시보드",
     items: [
-      "15개 대메뉴를 최신 디자인 시스템으로 통일",
-      "연료데이터관리 모듈 신규 — 전기·CNG·수소 충전데이터, 충전현황 대시보드",
-      "어드민 실시간 차량위치 지도, 경영/정시성 대시보드(노선별 수입금 랭킹)",
-      "급여·4대보험·소득세 정산 로직, 회계 원장 정합성 개선",
+      "15개 대메뉴 UI/UX 전면 리디자인",
+      "연료데이터관리 모듈 신규 — 전기·CNG·수소 충전데이터(모델·업로드·ZIP·배차노선 매칭 엑셀), 충전현황 대시보드",
+      "어드민 실시간 차량위치 지도(차량 검색·줌별 아이콘·건물 폴리곤), 경영/정시성 대시보드(노선별 수입금 랭킹)",
+      "급여·4대보험·소득세 정산 로직, 회계 원장 정합성 개선, 공지·연장근로·정비이력·승무 등 다수 기능",
     ],
     image: "/images/projects/ccbus.jpg",
   },
   {
-    name: "운수사 ERP B",
-    badge: "UI 개편 + 주요 개발",
-    badgeType: "main",
-    scale: "시내버스",
-    summary: "디자인 리뉴얼 · 권한 관리 · 급여 및 인사 기능 개선",
-    items: [
-      "bento 대시보드, 사이드바 폴딩, 브랜드 팔레트 통일, 로그인 재설계",
-      "메뉴 권한(RBAC) 일괄 적용 — 부서·영업소·직군 필터, 성능 개선",
-      "급여소급·4대보험·사원별 교육관리, 조회필터·테이블 전역 표준화",
-    ],
-    image: "/images/projects/seongnam.jpg",
-  },
-  {
     name: "운수사 ERP C",
-    badge: "신규 도입 + UI 구축",
-    badgeType: "key",
-    scale: "2026 신규 도입",
-    summary: "신규 도입 · 요구사항 정의 · 모듈 커스터마이징 및 대시보드 구축",
+    scale: "2026 신규 도입 + UI 구축",
+    summary: "요구사항 정의 · 모듈 커스터마이징 · 메인 대시보드 신규",
     items: [
-      "킥오프 주관, 10개 모듈 요구사항 정의·개발방향 수립",
-      "전역 디자인 시스템·메인 대시보드 신규 구축(운영평가·사고건수·운행실적)",
-      "브랜드 아이덴티티 적용, 인사 데이터 마이그레이션 보정",
+      "도입 PM — 킥오프 주관, 10개 모듈 요구사항 정의·개발방향 수립, 배포 협의",
+      "전역 디자인 시스템·메인 대시보드 신규(운영평가·사고건수 링·운행실적)",
+      "브랜드 아이덴티티 적용, 회계·자재·정비·수입금 모듈 UI 정비, 인사 데이터 마이그레이션 보정",
     ],
     image: "/images/projects/gonghang.jpg",
   },
   {
     name: "운수사 ERP D",
-    badge: "UI 개편 + 모듈 신규",
-    badgeType: "key",
-    scale: "2026",
-    summary: "시설관리 모듈 신규 구축 및 대시보드 개선",
+    scale: "2026 · UI 개편 + 모듈 신규",
+    summary: "시설관리 모듈 풀빌드 · 대시보드 개편",
     items: [
-      "대시보드 UI/UX 전면 개편(브랜드 반영)",
-      "시설관리 모듈 풀빌드 — 자산/결함/점검/충전/계약/약도, htmx 부분 렌더링",
+      "시설관리 모듈 신규 풀빌드 — 자산/결함/점검/충전/계약/약도 + 모달 등록 UI + 데모 시드",
+      "htmx 부분 렌더링으로 로딩 성능 개선, 대시보드 전면 개편(브랜드 반영)",
     ],
     image: "/images/projects/kangjin.jpg",
   },
   {
     name: "운수사 ERP E",
-    badge: "UI 개편 + 기능 개발",
-    badgeType: "key",
-    scale: "2026",
-    summary: "대시보드 리뉴얼 및 실시간 위젯 기능 개발",
+    scale: "2026 · UI 개편 + 기능 개발",
+    summary: "메인 대시보드 리뉴얼 · 실시간 위젯 · 스케줄러",
     items: [
-      "메인 대시보드 전면 리뉴얼 + 뉴스·날씨 API 실시간 위젯, 스케줄러",
-      "급여 정산 안정화(NULL·키 누락 서버에러 수정), 점검정비 UI",
+      "메인 대시보드 전면 리뉴얼 + 뉴스·날씨 API 실시간 위젯, 메뉴 위젯/검색 UX, 스케줄러",
+      "급여 정산 안정화(NULL·키 누락 서버에러·정비직 필터 수정), 점검정비 UI",
     ],
     image: "/images/projects/bumil.jpg",
   },
 ];
 
-/* ---------- 05. EXPERIENCE ---------- */
+/* ---------- AI를 쓰는 방식 ---------- */
+
+export const aiData = {
+  callout:
+    "**Cursor·Claude Code를 일상 개발 도구로 씁니다.** 설계와 검수는 제가 하고, 반복 구현과 코드 탐색은 AI에 맡겨 혼자서도 팀 규모의 산출량을 냅니다.",
+  items: [
+    {
+      title: "대량 화면 교체",
+      desc: "현장 업무 앱 50여 화면 — 디자인 토큰과 기준 화면을 먼저 만든 뒤, 나머지 화면을 AI로 변환하고 직접 검수·수정. 한 달 안에 전면 재구성이 가능했던 이유.",
+    },
+    {
+      title: "레거시 ERP 파악",
+      desc: "수년간 쌓인 Django 모놀리식의 모듈 구조·쿼리 흐름을 AI로 요약해 변경 영향 범위를 먼저 확인하고 손댐.",
+    },
+    {
+      title: "데이터 분석·보정 규칙",
+      desc: "DTG 원본 6,500만 건 분석 스크립트 작성, 센서 글리치·시각 오류 패턴을 찾아 보정 규칙으로 정리.",
+    },
+    {
+      title: "자동화 스크립트",
+      desc: "App Store Connect API 제출 자동화, 스토어 스크린샷 생성, GitHub 웹훅 커밋 수집 같은 반복 작업을 스크립트로.",
+    },
+    {
+      title: "문서 초안",
+      desc: "요구사항정의서·제안서·사용가이드의 구조를 AI로 잡고 내용은 직접 채움.",
+    },
+  ],
+};
+
+/* ---------- 기획·PM도 합니다 ---------- */
+
+export const pmData = {
+  intro: "개발만 하는 건 아닙니다. 아래는 같은 제품에서 PM으로 한 일입니다.",
+  groups: [
+    {
+      title: "요구정의 · 화면 설계",
+      items: ["운수사별 업무 분석, 메뉴·기능 구조 설계, Figma 구성도", "신규 도입 ERP 10개 모듈 요구사항 정의·개발방향 수립, 킥오프·회의록"],
+    },
+    {
+      title: "프로젝트 관리",
+      items: ["다중 프로젝트 WBS — 진척 점검·QC·구현 기간 설정, 개발자/업체 소통", "배포 점검, 매뉴얼·패치노트·CS 보고서"],
+    },
+    {
+      title: "제안 · 계약 · 조달",
+      items: [
+        "자사 제품의 중기부 혁신제품 지정(2024.08)·조달청 등록 — 제품소개서·규격서·조달적합성 서류",
+        "음주측정 키오스크 운수사 7곳 물품공급계약, 구독 견적·계약, 공공입찰 정성제안서",
+      ],
+    },
+  ] as Toggle[],
+};
+
+/* ---------- 경력 ---------- */
 
 export interface CareerYear {
   year: string;
@@ -946,41 +870,31 @@ export const careerData = {
   period: "2024.06 ~ 현재",
   roles: [
     { title: "사업추진팀 · PM", period: "2024.06 ~ 2025.12" },
-    { title: "개발3팀(모빌리티팀) · PM & Full-stack Engineer", period: "2026.01 ~ 현재" },
+    { title: "개발3팀(모빌리티팀) · Full-stack Engineer & PM", period: "2026.01 ~ 현재" },
   ],
   years: [
     {
       year: "2024",
-      title: "PM 및 서비스 기획 중심",
-      items: [
-        "모빌리티 ERP 운영 프로젝트 관리 — WBS, 배포 점검, 매뉴얼·패치노트",
-        "요구사항 분석 및 화면 설계",
-        "자사 제품의 중기부 혁신제품 지정 및 조달청 등록",
-      ],
+      title: "PM · 서비스 기획",
+      items: ["모빌리티 ERP 운영 PM — WBS, 배포 점검, 매뉴얼·패치노트", "혁신제품 지정·조달청 등록"],
     },
     {
       year: "2025",
-      title: "제품 기획 및 B2B 사업 확장",
-      items: [
-        "운수사별 ERP 기획 및 Figma 화면 설계",
-        "다중 프로젝트 일정 및 품질 관리",
-        "제안서·견적서·계약, 혁신제품 시범사용 신청, 고객 커뮤니케이션",
-      ],
+      title: "기획 + 개발 시작",
+      items: ["운수사별 ERP 화면 설계, 다중 프로젝트 일정·품질 관리", "유지보수·CS를 직접 맡으며 코드에 밀착, 현장 그룹웨어 단독 구축 시작"],
     },
     {
       year: "2026",
-      title: "PM · 디자인 · 개발 역량 확장",
+      title: "풀스택 · 디자인 주도",
       items: [
-        "신규 ERP 도입 PM, 음주측정 키오스크 운수사 7곳 물품공급계약 실행",
-        "제품군 전체 UI/UX 리디자인",
-        "백엔드·프론트엔드·모바일 기능 직접 개발, 앱 스토어 출시",
-        "DTG·음주측정기 연동, 내부 업무 자동화 구축",
+        "메인 ERP 전 모듈 개발, 제품군 전체 UI 리디자인",
+        "음주측정 웹+앱, 현장 업무 앱 스토어 출시, DTG·음주측정기 연동, 사내 그룹웨어 개편",
       ],
     },
   ] as CareerYear[],
 };
 
-/* ---------- 06. TECHNICAL SKILLS ---------- */
+/* ---------- 기술 스택 ---------- */
 
 export interface SkillGroup {
   group: string;
@@ -988,88 +902,62 @@ export interface SkillGroup {
 }
 
 export const skillGroups: SkillGroup[] = [
-  { group: "Frontend", tags: ["React", "TypeScript", "JavaScript", "SCSS", "HTML", "htmx"] },
-  { group: "Backend", tags: ["Python", "Django", "REST API", "MySQL"] },
-  { group: "Mobile", tags: ["Flutter", "Dart", "GetX", "Firebase(FCM)"] },
-  { group: "Database & Integration", tags: ["DB 설계", "API 연동", "Bluetooth BLE", "GPS · OSM", "권한(RBAC)"] },
-  { group: "Design", tags: ["Figma", "UI/UX", "Design System", "Data Visualization"] },
-  { group: "Project Management", tags: ["WBS", "요구사항 정의", "일정 관리", "품질 관리", "B2B 커뮤니케이션", "제안·조달"] },
+  { group: "Backend", tags: ["Python", "Django", "REST API", "MySQL", "SQLite", "멀티스레드 수집기"] },
+  { group: "Frontend", tags: ["JavaScript", "React", "TypeScript", "SCSS", "HTML", "htmx"] },
+  { group: "Mobile", tags: ["Flutter", "Dart", "GetX", "Firebase(FCM)", "App Store Connect API"] },
+  { group: "Integration", tags: ["Bluetooth BLE", "GPS · OSM/Leaflet", "외부 벤더 DB/API", "GitHub 웹훅", "RBAC 설계"] },
+  { group: "AI Tools", tags: ["Cursor", "Claude Code"] },
+  { group: "Design", tags: ["Figma", "Design System", "Data Visualization"] },
+  { group: "PM", tags: ["요구사항 정의", "WBS", "품질 관리", "제안·조달·계약"] },
 ];
 
-/* ---------- 07. BUSINESS & DOCUMENTATION ---------- */
+/* ---------- 산출물 ---------- */
 
 export interface DocumentCard {
   title: string;
-  badge: string;
-  badgeType: "prop" | "ba" | "sales" | "doc";
   items: string[];
 }
 
 export const documentsData: DocumentCard[] = [
   {
     title: "제품 제안서 · 서비스 소개서",
-    badge: "제안",
-    badgeType: "prop",
-    items: [
-      "음주측정 관리 시스템 제안서 — 법규 근거 정리, 지문+캠+정밀측정+ERP 연동 3단계 필터링, 키오스크/노트북형 2종",
-      "모빌리티 ERP 서비스소개서 타깃별 다버전, 리플렛, 요금표, 도입제안 공문",
-    ],
+    items: ["음주측정 관리 시스템 제안서 — 법규 근거, 3단계 안전 필터링, 키오스크/노트북형 2종", "모빌리티 ERP 서비스소개서 다버전·리플렛·요금표·도입제안 공문"],
   },
   {
     title: "정부지원사업 · 혁신제품",
-    badge: "조달",
-    badgeType: "sales",
-    items: [
-      "중기부 혁신제품 지정(2024.08) — 제품소개서·규격서·조달적합성 서류, 나라장터 등록",
-      "혁신제품 시범사용 신청, 스마트공방/팩토리 정부지원사업 관리",
-    ],
+    items: ["중기부 혁신제품 지정(2024.08) — 제품소개서·규격서·조달적합성 서류, 나라장터 등록", "혁신제품 시범사용 신청, 스마트공방/팩토리 정부지원사업 관리"],
   },
   {
-    title: "요구사항 정의서",
-    badge: "BA",
-    badgeType: "ba",
-    items: [
-      "관광·렌터카 운수사 WEB/APP v2.0 요구사항정의서(부가세·급여명세·정산-외주·휴가신청)",
-      "신규 도입 ERP 10개 모듈 요구사항 정의 및 개발방향 수립",
-    ],
-  },
-  {
-    title: "화면 설계서 · 메뉴 구조도",
-    badge: "BA",
-    badgeType: "ba",
-    items: [
-      "그룹웨어 메뉴 구성 질문서(작업접수 → 지시서 → 일지·상태값·권한)",
-      "모빌리티 ERP 기능구성도, SNS 로그인 설계, 운수사별 Figma 구성도",
-    ],
+    title: "요구사항정의서 · 화면설계 · 메뉴구조도",
+    items: ["관광·렌터카 운수사 WEB/APP v2.0 요구사항정의서", "그룹웨어 메뉴 구성 질문서, 모빌리티 ERP 기능구성도, SNS 로그인 설계"],
   },
   {
     title: "기술 · 사업 제안서",
-    badge: "입찰",
-    badgeType: "doc",
-    items: [
-      "DTG 점검센터 운영 용역 정성제안서 — 공공기관 발주, 자사 혁신제품 기반 점검 프로세스 디지털화",
-      "공공 정산관리시스템 · FMS 차량평가 플랫폼 제안 — 준공영제 운송원가 산정·보조금 집행",
-    ],
+    items: ["DTG 점검센터 운영 용역 정성제안서(공공기관 발주)", "공공 정산관리시스템 · FMS 차량평가 플랫폼 제안"],
   },
   {
-    title: "사용자 매뉴얼 · 운영 문서",
-    badge: "문서화",
-    badgeType: "doc",
-    items: [
-      "그룹웨어 사용가이드(웹+모바일 59p), ERP 매뉴얼·패치노트·CS 내역",
-      "도입 킥오프 회의록, 진행보고서, 대금청구·전자세금계산서",
-    ],
+    title: "매뉴얼 · 운영 문서",
+    items: ["그룹웨어 사용가이드(웹+모바일 59p), ERP 매뉴얼·패치노트·CS 내역", "킥오프 회의록, 진행보고서, 대금청구·전자세금계산서"],
   },
 ];
 
 export const disclaimerNote =
-  "※ 고객사·제품명은 비공개 원칙에 따라 업종·규모로만 표기했습니다. 기능·역할은 본인이 작성한 문서와 개발 내역 기반이며, 계약금액·개인정보 등 민감정보는 포함하지 않았습니다.";
+  "고객사·제품명은 비공개 원칙에 따라 업종·규모로만 표기했습니다. 기능·역할은 본인이 작성한 문서와 개발 내역 기반이며, 계약금액·개인정보 등 민감정보는 포함하지 않았습니다.";
 
-/* ---------- 08. CONTACT ---------- */
+/* ---------- 사이드 프로젝트 ---------- */
+
+export const sideProject = {
+  title: "동네 유휴 자원 연결 앱",
+  meta: "예비창업 · 중기부 「모두의 창업」 2차 로컬트랙 지원 · 2026.09 제출, 결과 대기",
+  desc: "주민이 지금 필요한 기능(잠깐 쉴 곳·비 피할 곳·아이와 갈 곳)을 고르면, 그 시각에 비어 있는 동네 공간을 업종과 상관없이 하나의 결과로 보여주는 서비스. 가게는 개방할 기능·시간·조건만 등록합니다.",
+  items: ["문제 정의·기존 서비스 비교·수익 구조·3단계 로드맵", "MVP 화면 목업 5종, 첫 버전 앱(자원 등록·기능 기반 검색·현재 시각 이용 가능 표시) 자체 개발 계획"],
+};
+
+/* ---------- 연락 ---------- */
 
 export const closingData = {
-  headline: "제품을 이해하고, 문제를 정의하고,\n실제 결과물로 연결하는 사람.",
+  headline: "제품을 이해하고, 문제를 정의하고, 직접 만들어서 결과로 연결하는 사람.",
   sub: "함께 더 나은 제품을 만들어 갈 기회를 기다립니다.",
   email: profileData.email,
-  footer: "장소현 · Product Manager & Full-stack Engineer · Portfolio 2024–2026",
+  footer: "장소현 · Full-stack Developer & Product Manager · 2024–2026",
 };

@@ -1,39 +1,39 @@
-import { heroData } from "@/data/portfolio";
+import { pageData, glanceData } from "@/data/portfolio";
 import { em } from "@/lib/em";
 
-/** 01. HERO — 정체성 한 줄 + 핵심 역량 3카드 + 대표 기술 */
+/** 페이지 머리 — 노션 페이지 제목 + 속성 표 + 콜아웃 */
 export default function Hero() {
   return (
-    <section className="hero" id="top">
-      <div className="container">
-        <p className="hero-who">{heroData.who}</p>
-        <h1>{em(heroData.title)}</h1>
-        <p className="hero-sub">{em(heroData.subtitle)}</p>
+    <header className="n-head" id="top">
+      <div className="n-icon">{pageData.icon}</div>
+      <h1 className="n-title">{pageData.title}</h1>
+      <p className="n-subtitle">{pageData.subtitle}</p>
 
-        <div className="hero-caps">
-          {heroData.capabilities.map((c) => (
-            <div key={c.title} className="hero-cap">
-              <b>{c.title}</b>
-              <p>{c.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="hero-foot">
-          <div className="chips">
-            {heroData.tech.map((t) => (
-              <span key={t} className="chip">
-                {t}
-              </span>
-            ))}
+      <dl className="n-props">
+        {pageData.props.map((p) => (
+          <div key={p.k}>
+            <dt>{p.k}</dt>
+            <dd>{p.v}</dd>
           </div>
-          {heroData.resume && (
-            <a className="btn" href={heroData.resume} target="_blank" rel="noreferrer">
-              이력서 보기
-            </a>
-          )}
+        ))}
+      </dl>
+
+      <p className="n-p">{em(pageData.intro)}</p>
+
+      <div className="n-callout">
+        <span className="n-callout-icon">💡</span>
+        <div>
+          <p>{em(glanceData.callout)}</p>
+          <dl className="n-stats">
+            {glanceData.stats.map((s) => (
+              <div key={s.k}>
+                <dt>{s.k}</dt>
+                <dd>{s.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
