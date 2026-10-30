@@ -545,8 +545,9 @@ export const pageData = {
   props: [
     { k: "소속", v: "㈜서울소프트 개발3팀(모빌리티팀) · 2024.06 ~" },
     { k: "역할", v: "PM · UI/UX · Full-stack 개발" },
-    { k: "주력 스택", v: "Python/Django · React/TypeScript · Flutter · JavaScript/SCSS" },
-    { k: "도메인", v: "모빌리티 ERP (배차·수입금·급여·회계·정비·자재·인사·안전·DTG·음주측정)" },
+    { k: "도메인", v: "시내버스 운수사 ERP · 그룹웨어 · 현장 업무 모바일 앱 (B2B)" },
+    { k: "기술", v: "Python/Django · React/TypeScript · Flutter · MySQL" },
+    { k: "도구", v: "Figma · Cursor · Claude Code · GitHub · App Store Connect" },
   ] as Prop[],
 };
 
