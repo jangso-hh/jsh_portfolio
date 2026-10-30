@@ -7,7 +7,7 @@ export default function Pm() {
       <div className="container">
         <header className="sec-head">
           <span className="sec-num">04</span>
-          <h2>기획·PM도 합니다</h2>
+          <h2>기획 · PM</h2>
           <p>{pmData.intro}</p>
         </header>
         <div className="grid3">

@@ -8,7 +8,7 @@ export default function Skills() {
         <header className="sec-head">
           <span className="sec-num">06</span>
           <h2>기술 스택</h2>
-          <p>프로젝트에서 실제로 사용한 기술만 적었습니다. 숙련도는 위 프로젝트의 담당 범위로 대신합니다.</p>
+          <p>실제 프로젝트에서 사용한 기술만 기재했습니다. 숙련도는 각 프로젝트의 담당 범위로 확인하실 수 있습니다.</p>
         </header>
         <div className="grid4">
           {skillGroups.map((g) => (

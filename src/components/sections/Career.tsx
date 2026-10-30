@@ -8,7 +8,7 @@ export default function Career() {
         <header className="sec-head">
           <span className="sec-num">05</span>
           <h2>경력</h2>
-          <p>PM으로 시작해 디자인과 개발까지 범위를 넓혀 왔습니다. 지금은 세 역할을 동시에 맡습니다.</p>
+          <p>PM으로 시작해 UI/UX 디자인, 개발로 역할을 확장했습니다. 현재는 세 역할을 함께 수행합니다.</p>
         </header>
 
         <div className="co">

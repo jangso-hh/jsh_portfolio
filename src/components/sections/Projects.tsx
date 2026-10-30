@@ -29,7 +29,7 @@ export default function Projects() {
           <header className="sec-head">
             <span className="sec-num">01</span>
             <h2>개발한 것들</h2>
-            <p>직접 코드를 쓴 프로젝트입니다. 위에서부터 비중이 큰 순서예요.</p>
+            <p>직접 설계하고 구현한 프로젝트입니다. 기여도와 규모가 큰 순으로 정리했습니다.</p>
           </header>
 
           {devProjects.map((p, i) => {
