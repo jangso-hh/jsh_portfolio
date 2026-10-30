@@ -2,18 +2,21 @@ import { closingData, profileData } from "@/data/portfolio";
 
 export default function Contact() {
   return (
-    <section id="contact" className="n-contact">
-      <div className="n-divider" />
-      <p className="n-closing">{closingData.headline}</p>
-      <p className="n-muted">{closingData.sub}</p>
-      <p className="n-links">
-        <a href={`mailto:${closingData.email}`}>✉️ {closingData.email}</a>
-        {profileData.github && (
-          <a href={profileData.github} target="_blank" rel="noreferrer">
-            GitHub
+    <section className="sec contact" id="contact">
+      <div className="container">
+        <h2 className="closing">{closingData.headline}</h2>
+        <p className="closing-sub">{closingData.sub}</p>
+        <div className="contact-actions">
+          <a className="btn primary" href={`mailto:${closingData.email}`}>
+            {closingData.email}
           </a>
-        )}
-      </p>
+          {profileData.github && (
+            <a className="btn" href={profileData.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

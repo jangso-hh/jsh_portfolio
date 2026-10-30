@@ -6,6 +6,7 @@ import { pageData } from "@/data/portfolio";
 
 const NAV_ITEMS = [
   { label: "개발", href: "#projects" },
+  { label: "ERP 사례", href: "#erp-others" },
   { label: "AI", href: "#ai" },
   { label: "PM", href: "#pm" },
   { label: "경력", href: "#career" },
@@ -14,10 +15,19 @@ const NAV_ITEMS = [
   { label: "연락", href: "#contact" },
 ];
 
-/** 노션 상단바처럼 얇은 고정 헤더 — 현재 섹션을 표시한다 */
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // 현재 보고 있는 섹션을 네비게이션에 표시
   useEffect(() => {
     const sections = NAV_ITEMS.map((n) => document.querySelector<HTMLElement>(n.href)).filter(
       (el): el is HTMLElement => el !== null,
@@ -29,25 +39,41 @@ export default function Header() {
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
         if (visible[0]) setActive(`#${visible[0].target.id}`);
       },
-      { rootMargin: "-30% 0px -60% 0px" },
+      { rootMargin: "-40% 0px -55% 0px" },
     );
     sections.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
 
   return (
-    <header className="n-topbar">
-      <a href="#top" className="n-brand">
-        {pageData.icon} {pageData.title}
-      </a>
-      <nav className="n-nav">
-        {NAV_ITEMS.map((item) => (
-          <a key={item.href} href={item.href} className={active === item.href ? "active" : undefined}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
-      <ThemeToggle />
+    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+      <div className="container nav-row">
+        <a href="#top" className="brand">
+          {pageData.title}
+        </a>
+        <nav className="nav-desktop">
+          {NAV_ITEMS.map((item) => (
+            <a key={item.href} href={item.href} className={active === item.href ? "active" : undefined}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className="nav-tools">
+          <ThemeToggle />
+          <button type="button" onClick={() => setOpen((v) => !v)} aria-label="메뉴" className="nav-burger">
+            ☰
+          </button>
+        </div>
+      </div>
+      {open && (
+        <nav className="nav-mobile">
+          {NAV_ITEMS.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className={active === item.href ? "active" : undefined}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

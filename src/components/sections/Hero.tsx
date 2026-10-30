@@ -1,39 +1,37 @@
 import { pageData, glanceData } from "@/data/portfolio";
 import { em } from "@/lib/em";
 
-/** 페이지 머리 — 노션 페이지 제목 + 속성 표 + 콜아웃 */
+/** 히어로 — 정체성 + 속성 + 한눈에 보기 지표 */
 export default function Hero() {
   return (
-    <header className="n-head" id="top">
-      <div className="n-icon">{pageData.icon}</div>
-      <h1 className="n-title">{pageData.title}</h1>
-      <p className="n-subtitle">{pageData.subtitle}</p>
-
-      <dl className="n-props">
-        {pageData.props.map((p) => (
-          <div key={p.k}>
-            <dt>{p.k}</dt>
-            <dd>{p.v}</dd>
+    <section className="hero" id="top">
+      <div className="container">
+        <div className="hero-grid">
+          <div>
+            <p className="hero-who">{pageData.subtitle}</p>
+            <h1>{pageData.title}</h1>
+            <p className="hero-sub">{em(pageData.intro)}</p>
           </div>
-        ))}
-      </dl>
-
-      <p className="n-p">{em(pageData.intro)}</p>
-
-      <div className="n-callout">
-        <span className="n-callout-icon">💡</span>
-        <div>
-          <p>{em(glanceData.callout)}</p>
-          <dl className="n-stats">
-            {glanceData.stats.map((s) => (
-              <div key={s.k}>
-                <dt>{s.k}</dt>
-                <dd>{s.v}</dd>
+          <dl className="props">
+            {pageData.props.map((p) => (
+              <div key={p.k}>
+                <dt>{p.k}</dt>
+                <dd>{p.v}</dd>
               </div>
             ))}
           </dl>
         </div>
+
+        <div className="stats">
+          {glanceData.stats.map((s) => (
+            <div key={s.k} className="stat">
+              <span className="stat-k">{s.k}</span>
+              <b>{s.v}</b>
+            </div>
+          ))}
+        </div>
+        <p className="hero-callout">{em(glanceData.callout)}</p>
       </div>
-    </header>
+    </section>
   );
 }

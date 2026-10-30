@@ -11,15 +11,14 @@ import Footer from "@/components/sections/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
 /**
- * 노션 문서형 한 열 레이아웃.
- * 순서: 머리(속성·콜아웃) → 개발한 것들 → AI → PM → 경력 → 스택 → 산출물·사이드 → 연락
+ * 순서: Hero → 개발한 것들 → 다른 ERP 사례 → AI → PM → 경력 → 스택 → 산출물·사이드 → 연락
  * 모든 데이터는 src/data/portfolio.ts 의 12번 블록.
  */
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="n-page">
+      <main>
         <Hero />
         <Projects />
         <Ai />

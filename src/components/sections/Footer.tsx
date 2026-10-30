@@ -1,5 +1,9 @@
 import { closingData } from "@/data/portfolio";
 
 export default function Footer() {
-  return <footer className="n-footer">{closingData.footer}</footer>;
+  return (
+    <footer className="site-footer">
+      <div className="container">{closingData.footer}</div>
+    </footer>
+  );
 }
