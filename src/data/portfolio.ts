@@ -134,7 +134,7 @@ export const profileData: ProfileData = {
   name: "장소현",
   nameEn: "Jang So Hyeon",
   role: "Product Manager × Full-stack Engineer · Mobility",
-  tagline: "제품을 발굴하고, 만들고, 파는 프로덕트 엔지니어",
+  tagline: "모빌리티 ERP Product Manager — 기획부터 직접 구현까지",
   email: "seoulsoftinfo@gmail.com",
   // 아래 링크는 PDF에 없어 비워둠 — 값을 채우면 Hero/Contact/Archiving에 자동 노출됩니다.
   github: "",
@@ -539,12 +539,12 @@ export interface Toggle {
 export const pageData = {
   icon: "🧑‍💻",
   title: "장소현",
-  subtitle: "Full-stack Developer & Product Manager · 모빌리티 ERP",
+  subtitle: "Product Manager · 모빌리티 ERP (기획 → 직접 구현)",
   intro:
-    "운수사 ERP·그룹웨어·모바일 앱을 **백엔드부터 프론트엔드, 모바일까지 직접 설계하고 구현**하는 풀스택 개발자입니다. 요구사항 정의와 화면 설계, 일정 관리를 함께 수행하여 기획과 구현 사이의 간극 없이 제품을 완성합니다. AI 코딩 도구를 개발 프로세스에 체계적으로 적용해 높은 생산성으로 프로덕션에 배포합니다.",
+    "모빌리티 ERP의 **기획과 PM을 본업**으로, 요구사항 정의·화면 설계·일정 관리까지 제품 전 과정을 담당합니다. 기획한 내용을 가장 정확하게 구현하기 위해 개발까지 범위를 넓혔고, 현재는 ERP 전 모듈·그룹웨어·모바일 앱을 **백엔드부터 프론트엔드, 모바일까지 직접 구현**합니다. AI 코딩 도구를 개발 프로세스에 적용해 기획–구현–배포를 한 사람이 끝까지 책임집니다.",
   props: [
     { k: "소속", v: "㈜서울소프트 개발3팀(모빌리티팀) · 2024.06 ~" },
-    { k: "역할", v: "Full-stack Engineer · PM · UI/UX" },
+    { k: "역할", v: "PM · UI/UX · Full-stack 개발" },
     { k: "주력 스택", v: "Python/Django · React/TypeScript · Flutter · JavaScript/SCSS" },
     { k: "도메인", v: "모빌리티 ERP (배차·수입금·급여·회계·정비·자재·인사·안전·DTG·음주측정)" },
   ] as Prop[],
@@ -553,7 +553,7 @@ export const pageData = {
 /* ---------- 한눈에 보기 ---------- */
 
 export const glanceData = {
-  callout: "**기획과 구현을 모두 담당하는 개발자입니다.** 아래 프로젝트는 모두 직접 구현했으며, 그중 절반은 설계부터 출시까지 단독으로 완성했습니다.",
+  callout: "**PM이 본업이며, 기획한 제품을 직접 구현합니다.** 아래 프로젝트는 요구사항 정의부터 개발까지 직접 수행했고, 그중 절반은 설계부터 출시까지 단독으로 완성했습니다.",
   stats: [
     { k: "운수사 ERP", v: "6개 제품군 · 21개 모듈 개발" },
     { k: "단독 구축", v: "그룹웨어 1종 · 음주측정 웹+앱 1종" },
@@ -875,7 +875,7 @@ export const careerData = {
   period: "2024.06 ~ 현재",
   roles: [
     { title: "사업추진팀 · PM", period: "2024.06 ~ 2025.12" },
-    { title: "개발3팀(모빌리티팀) · Full-stack Engineer & PM", period: "2026.01 ~ 현재" },
+    { title: "개발3팀(모빌리티팀) · PM & Full-stack 개발", period: "2026.01 ~ 현재" },
   ],
   years: [
     {
@@ -964,5 +964,5 @@ export const closingData = {
   headline: "제품을 이해하고 문제를 정의하며, 직접 구현해 결과로 연결합니다.",
   sub: "함께 더 나은 제품을 만들어 갈 기회를 기다립니다.",
   email: profileData.email,
-  footer: "장소현 · Full-stack Developer & Product Manager · 2024–2026",
+  footer: "장소현 · Product Manager & Full-stack Developer · 2024–2026",
 };
