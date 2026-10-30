@@ -118,15 +118,11 @@ export default function Projects() {
                   <b>{e.name}</b>
                   <span className="im-scale">{e.scale}</span>
                 </div>
-                <p className="im-summary">{e.summary}</p>
-                <details className="more">
-                  <summary>작업 내용</summary>
-                  <ul className="list">
-                    {e.items.map((it) => (
-                      <li key={it}>{it}</li>
-                    ))}
-                  </ul>
-                </details>
+                <ul className="list">
+                  {e.items.map((it) => (
+                    <li key={it}>{em(it)}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>

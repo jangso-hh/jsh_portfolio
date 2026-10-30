@@ -547,7 +547,7 @@ export const pageData = {
     { k: "역할", v: "PM · UI/UX · Full-stack 개발" },
     { k: "도메인", v: "시내버스 운수사 ERP · 그룹웨어 · 현장 업무 모바일 앱 (B2B)" },
     { k: "기술", v: "Python/Django · React/TypeScript · Flutter · MySQL" },
-    { k: "도구", v: "Figma · Cursor · Claude Code · GitHub · App Store Connect" },
+    { k: "도구", v: "Figma · Claude Code · GitHub · App Store Connect" },
   ] as Prop[],
 };
 
@@ -757,7 +757,6 @@ export const devProjects: DevProject[] = [
 export interface ErpOther {
   name: string;
   scale: string;
-  summary: string;
   items: string[];
   image: string;
 }
@@ -769,43 +768,43 @@ export const erpOthers: ErpOther[] = [
   {
     name: "운수사 ERP A",
     scale: "시내버스 154대 · UI 개편 + 주요 개발",
-    summary: "연료데이터 신규 모듈 · 차량 실시간 위치 · 경영/정시성 대시보드",
     items: [
-      "15개 대메뉴 UI/UX 전면 리디자인",
-      "연료데이터관리 모듈 신규 — 전기·CNG·수소 충전데이터(모델·업로드·ZIP·배차노선 매칭 엑셀), 충전현황 대시보드",
-      "어드민 실시간 차량위치 지도(차량 검색·줌별 아이콘·건물 폴리곤), 경영/정시성 대시보드(노선별 수입금 랭킹)",
-      "급여·4대보험·소득세 정산 로직, 회계 원장 정합성 개선, 공지·연장근로·정비이력·승무 등 다수 기능",
+      "**UI/UX 전면 리디자인** — 15개 대메뉴, 메인화면 개편, 메뉴 검색창, 대메뉴 컬러·호버 규칙, 조회·버튼 레이아웃 전역 정리",
+      "**연료데이터관리 모듈 신규** — 전기·CNG·수소 충전데이터 모델/업로드(ZIP·양식별 컬럼 분기·중복 제거·덮어쓰기)/출력/필터, 배차노선 매칭 엑셀, 충전현황 대시보드(연료구분 필터·요일별 분포)",
+      "**관제·경영 대시보드** — 어드민 실시간 차량위치 지도(차량 검색·줌별 아이콘·건물 폴리곤), 노선별 수입금 랭킹, 경영/정시성 대시보드",
+      "**인사·급여** — 연장근로 페이지 신규·조회 필터, 인사발령 이력 관리, 4대보험 업로드 매칭 기준 변경, 소득세 간이세액표 공제대상 계산 수정, 월간승무계획표",
+      "**자재·정비** — 그리스주입이력관리 신규(등록/조회/이행현황), 입고단가 조회 필터, 부품연이월 페이지, 정비이력",
+      "**공지·수입금·회계** — 운수사 공지사항 페이지 신규, 전체공지 직원 검색, 앱 공지/개인알림 내용 보기, 수입금 메뉴 새창 열기, 회계 원장 정합성 개선",
     ],
     image: "/images/projects/ccbus.jpg",
   },
   {
     name: "운수사 ERP C",
     scale: "2026 신규 도입 + UI 구축",
-    summary: "요구사항 정의 · 모듈 커스터마이징 · 메인 대시보드 신규",
     items: [
-      "도입 PM — 킥오프 주관, 10개 모듈 요구사항 정의·개발방향 수립, 배포 협의",
-      "전역 디자인 시스템·메인 대시보드 신규(운영평가·사고건수 링·운행실적)",
-      "브랜드 아이덴티티 적용, 회계·자재·정비·수입금 모듈 UI 정비, 인사 데이터 마이그레이션 보정",
+      "**도입 PM** — 킥오프 주관, 10개 모듈 요구사항 정의·개발방향 수립, 배포 협의, 로컬 서버 세팅 가이드 작성",
+      "**메인 대시보드·전역 chrome 신규** — 운영평가·사고건수 링·운행실적 카드, 사이드바 소메뉴 동작, 테이블 오버플로우 전역 수정",
+      "**디자인 시스템** — 버튼 색 기능별 통일, 표 헤더 플랫 그레이, 알약형 미니탭, 조회·액션 버튼 라인 정렬을 전 모듈 일괄 적용",
+      "**브랜드 적용·모듈 UI 정비** — 로고·포인트색 반영, 회계·자재·정비/타이어 점검·수입금 마감·급여표·시설·문의 화면 정리, 인사 데이터 마이그레이션 보정",
     ],
     image: "/images/projects/gonghang.jpg",
   },
   {
     name: "운수사 ERP D",
     scale: "2026 · UI 개편 + 모듈 신규",
-    summary: "시설관리 모듈 풀빌드 · 대시보드 개편",
     items: [
-      "시설관리 모듈 신규 풀빌드 — 자산/결함/점검/충전/계약/약도 + 모달 등록 UI + 데모 시드",
-      "htmx 부분 렌더링으로 로딩 성능 개선, 대시보드 전면 개편(브랜드 반영)",
+      "**시설관리 모듈 신규 풀빌드** — 자산/결함/점검/충전/계약/약도 + 모달 등록 UI + 데모 시드",
+      "**대시보드 전면 개편** — 브랜드 반영, htmx 부분 렌더링으로 로딩 성능 개선",
     ],
     image: "/images/projects/kangjin.jpg",
   },
   {
     name: "운수사 ERP E",
     scale: "2026 · UI 개편 + 기능 개발",
-    summary: "메인 대시보드 리뉴얼 · 실시간 위젯 · 스케줄러",
     items: [
-      "메인 대시보드 전면 리뉴얼 + 뉴스·날씨 API 실시간 위젯, 메뉴 위젯/검색 UX, 스케줄러",
-      "급여 정산 안정화(NULL·키 누락 서버에러·정비직 필터 수정), 점검정비 UI",
+      "**메인 대시보드 전면 리뉴얼** — 뉴스·날씨 API 실시간 위젯, 메뉴 위젯·메뉴 검색, 스케줄러 기능 수정",
+      "**전 메뉴 화면 UI 개선** — 점검정비관리까지 모듈별 UI·기능 오류 일괄 수정",
+      "**급여 정산 안정화** — NULL·키 누락 서버에러, 정비직 필터 수정",
     ],
     image: "/images/projects/bumil.jpg",
   },
@@ -815,7 +814,7 @@ export const erpOthers: ErpOther[] = [
 
 export const aiData = {
   callout:
-    "**Cursor·Claude Code를 개발 프로세스에 통합해 활용합니다.** 설계와 검증은 직접 수행하고 반복 구현과 코드 탐색은 AI에 위임하여, 1인 개발로도 팀 단위의 생산성을 확보합니다.",
+    "**Claude Code를 개발 프로세스에 통합해 활용합니다.** 설계와 검증은 직접 수행하고 반복 구현과 코드 탐색은 AI에 위임하여, 1인 개발로도 팀 단위의 생산성을 확보합니다.",
   items: [
     {
       title: "대량 화면 교체",
@@ -912,7 +911,7 @@ export const skillGroups: SkillGroup[] = [
   { group: "Frontend", tags: ["JavaScript", "React", "TypeScript", "SCSS", "HTML", "htmx"] },
   { group: "Mobile", tags: ["Flutter", "Dart", "GetX", "Firebase(FCM)", "App Store Connect API"] },
   { group: "Integration", tags: ["Bluetooth BLE", "GPS · OSM/Leaflet", "외부 벤더 DB/API", "GitHub 웹훅", "RBAC 설계"] },
-  { group: "AI Tools", tags: ["Cursor", "Claude Code"] },
+  { group: "AI Tools", tags: ["Claude Code"] },
   { group: "Design", tags: ["Figma", "Design System", "Data Visualization"] },
   { group: "PM", tags: ["요구사항 정의", "WBS", "품질 관리", "제안·조달·계약"] },
 ];
