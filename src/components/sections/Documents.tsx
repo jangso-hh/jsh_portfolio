@@ -8,7 +8,7 @@ export default function Documents() {
         <header className="sec-head">
           <span className="sec-num">07</span>
           <h2>제안·조달·기획 산출물</h2>
-          <p>개발 외에 직접 작성한 기획·제안·운영 문서입니다. 외부 공개가 가능한 범위로 정리했습니다.</p>
+          <p>직접 작성한 기획·제안·운영 문서입니다.</p>
         </header>
         <div className="grid3">
           {documentsData.map((d) => (

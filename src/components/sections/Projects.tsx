@@ -29,7 +29,7 @@ export default function Projects() {
           <header className="sec-head">
             <span className="sec-num">01</span>
             <h2>개발한 것들</h2>
-            <p>직접 설계하고 구현한 프로젝트입니다. 기여도와 규모가 큰 순으로 정리했습니다.</p>
+            <p>직접 설계하고 구현한 프로젝트입니다.</p>
           </header>
 
           {devProjects.map((p, i) => {
@@ -78,7 +78,7 @@ export default function Projects() {
 
                   <p className="dp-summary">{em(p.summary)}</p>
 
-                  <h4>만든 것</h4>
+                  <h4>주요 구현 내용</h4>
                   <ul className="list">
                     {p.built.map((b) => (
                       <li key={b}>{em(b)}</li>
