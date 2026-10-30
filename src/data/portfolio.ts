@@ -682,7 +682,11 @@ export const devProjects: DevProject[] = [
       { k: "담당 범위", v: "메인 개발 (기반 코드·빌드 환경 1인 + 본인)" },
       { k: "팀", v: "2인" },
     ],
-    shots: [{ src: "/images/projects/app_home_main.jpg", caption: "승무원 홈 (스토어 등록 화면)", kind: "mobile" }],
+    shots: [
+      { src: "/images/projects/app_home_main.jpg", caption: "승무원 홈", kind: "mobile" },
+      { src: "/images/projects/app_dispatch.jpg", caption: "오늘 운행 현황", kind: "mobile" },
+      { src: "/images/projects/app_work_hours.jpg", caption: "근로시간", kind: "mobile" },
+    ],
     summary:
       "메인 ERP 도입과 함께 필요해진 현장 앱입니다. 기존 앱 코드 위에서 디자인 토큰 기반 디자인 시스템을 새로 세우고, 직군별 홈 4종과 50여 화면을 교체한 뒤 신규 기능을 3차에 걸쳐 붙여 양대 스토어에 올렸습니다.",
     built: [

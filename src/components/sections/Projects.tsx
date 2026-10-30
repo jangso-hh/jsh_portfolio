@@ -39,7 +39,7 @@ export default function Projects() {
                 <div className="dp-media">
                   {p.shots?.map((s) => (
                     <figure key={s.src}>
-                      <Zoom src={s.src} alt={s.caption} sizes={s.kind === "mobile" ? "280px" : "(max-width: 900px) 100vw, 620px"} />
+                      <Zoom src={s.src} alt={s.caption} sizes={s.kind === "mobile" ? "150px" : "(max-width: 900px) 100vw, 620px"} />
                       <figcaption>{s.caption}</figcaption>
                     </figure>
                   ))}

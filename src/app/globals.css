@@ -161,11 +161,15 @@ figcaption { font-size: 12.5px; color: var(--sub); margin-top: 8px; }
 .dp { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: start; padding: 48px 0; border-top: 1px solid var(--line); }
 .dp:first-of-type { border-top: 0; padding-top: 0; }
 .dp.flip .dp-media { order: 2; }
-.dp.mobile { grid-template-columns: 300px 1fr; }
+.dp.mobile { grid-template-columns: 470px 1fr; }
 .dp-media { position: sticky; top: 84px; }
 .dp-media figure + figure { margin-top: 16px; }
 .dp-media .zoom img { max-height: 560px; object-fit: cover; object-position: top; }
+/* 앱 화면: 폰 3장을 작게 나란히 (첫 디자인의 150px 폰 컷 크기) */
+.dp.mobile .dp-media { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.dp.mobile .dp-media figure + figure { margin-top: 0; }
 .dp.mobile .dp-media .zoom img { max-height: none; }
+.dp.mobile .dp-media figcaption { text-align: center; font-size: 12px; }
 .dp-num { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--acc); }
 .dp-body h3 { font-size: 25px; font-weight: 800; margin: 8px 0 6px; }
 .dp-tagline { font-size: 15.5px; color: var(--li); margin-bottom: 16px; }
@@ -230,7 +234,7 @@ figcaption { font-size: 12.5px; color: var(--sub); margin-top: 8px; }
   .hero-grid, .dp, .dp.mobile, .grid2, .co { grid-template-columns: 1fr; }
   .dp.flip .dp-media { order: 0; }
   .dp-media { position: static; }
-  .dp.mobile .dp-media { max-width: 280px; }
+  .dp.mobile .dp-media { max-width: 470px; }
   .tile.side { grid-column: auto; }
 }
 @media (max-width: 640px) {
