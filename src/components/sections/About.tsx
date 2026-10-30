@@ -1,11 +1,29 @@
-import { strengthsData, dualAxisData, growthData } from "@/data/portfolio";
+import {
+  strengthsData,
+  dualAxisData,
+  growthData,
+  scopeSkillsData,
+} from "@/data/portfolio";
 import { em } from "@/lib/em";
 import FadeIn from "@/components/ui/FadeIn";
 
-/** original.html 상단 .docbody — 이유(.str) / 두 축(.dual) / 성장(.growth) */
+/** 상단 .docbody — 핵심 역량(.scope) / 이유(.str) / 두 축(.dual) / 성장(.growth) */
 export default function About() {
   return (
     <div className="docbody" id="about">
+      <FadeIn>
+        <section>
+          <h2>핵심 역량</h2>
+          <div className="scope">
+            {scopeSkillsData.map((s) => (
+              <span key={s} className="tag2">
+                {s}
+              </span>
+            ))}
+          </div>
+        </section>
+      </FadeIn>
+
       <FadeIn>
         <section>
           <h2>이 사람을 뽑아야 하는 이유</h2>

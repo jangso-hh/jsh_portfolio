@@ -4,6 +4,7 @@ import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Career from "@/components/sections/Career";
 import Achievements from "@/components/sections/Achievements";
+import SideProjects from "@/components/sections/SideProjects";
 import Footer from "@/components/sections/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
@@ -22,6 +23,7 @@ export default function Home() {
           <Projects />
           <Career />
           <Achievements />
+          <SideProjects />
           <Footer />
         </div>
       </main>

@@ -247,6 +247,10 @@ body {
 .dark .b-ba { background: #16294d; color: #9fc0f0; }
 .dark .b-sales { background: #0e3a30; color: #7fd8cd; }
 .dark .b-doc { background: #43300f; color: #f0c27a; }
+.b-side { background: #fde8ef; color: #b3285a; }
+.dark .b-side { background: #44182a; color: #f3a5c0; }
+.dcard .sp-desc { font-size: 12.4px; color: var(--li); margin: 0 0 6px; }
+.dcard .sp-desc b { color: var(--ink); }
 .dcard ul { list-style: none; margin: 0; padding: 0; }
 .dcard li { font-size: 12.1px; color: var(--li); padding: 2px 0 2px 13px; position: relative; }
 .dcard li:before { content: "·"; position: absolute; left: 2px; color: var(--acc); font-weight: 800; }
@@ -255,6 +259,28 @@ body {
 .stack, .scope { display: flex; flex-wrap: wrap; gap: 7px; }
 .tag2 { background: var(--chipbg); color: var(--chipfg); border-radius: 6px; padding: 5px 11px; font-size: 12px; font-weight: 600; }
 .note { background: var(--soft); border: 1px dashed var(--line); border-radius: 10px; padding: 12px 15px; font-size: 12px; color: var(--sub); }
+
+/* 접기/펼치기 — 케이스 카드·ERP 카드의 상세 내용 */
+.more { margin-top: 6px; }
+.more > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 800; color: var(--acc); letter-spacing: 0.04em; padding: 4px 0; user-select: none; }
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary:before { content: "＋"; font-size: 12px; width: 16px; height: 16px; border-radius: 4px; background: var(--chipbg); color: var(--chipfg); display: inline-flex; align-items: center; justify-content: center; }
+.more[open] > summary:before { content: "－"; }
+.more > summary:hover { text-decoration: underline; }
+.more[open] > summary { margin-bottom: 4px; }
+
+/* 폰 스크린샷 — 본문 옆에 좁게 */
+.csbd.withphone { display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: start; }
+.csbd.withphone .phonecol { position: sticky; top: 76px; }
+.csbd.withphone .shot.phone { margin-bottom: 8px; }
+.csbd.withphone .shotcap { margin: 0; }
+
+/* ERP 카드 2열 + 산출물 2열 */
+.pjgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pjgrid .pj { display: block; margin-bottom: 0; }
+.pjgrid .pjshot { border-radius: 8px; border: 1px solid var(--line); margin-bottom: 10px; }
+.dgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.dgrid .dcard { margin-bottom: 0; }
 
 /* footer */
 .docfooter { padding: 20px 48px; border-top: 1px solid var(--line); color: var(--sub); font-size: 11.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: var(--soft); }
@@ -270,6 +296,9 @@ body {
   .row { grid-template-columns: 1fr; }
   .ba { grid-template-columns: 1fr; }
   .pj { grid-template-columns: 1fr; }
+  .csbd.withphone { grid-template-columns: 1fr; }
+  .csbd.withphone .phonecol { position: static; max-width: 260px; margin: 0 auto; }
+  .pjgrid, .dgrid { grid-template-columns: 1fr; }
 }
 
 @media print {
