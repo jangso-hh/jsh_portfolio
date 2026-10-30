@@ -1,54 +1,28 @@
-import FadeIn from "@/components/ui/FadeIn";
-import SectionTitle from "@/components/ui/SectionTitle";
-import SkillTag from "@/components/ui/SkillTag";
-import { skillsData } from "@/data/portfolio";
+import { skillGroups } from "@/data/portfolio";
 
-const CATEGORIES: { key: keyof typeof skillsData; label: string }[] = [
-  { key: "frontend", label: "Frontend" },
-  { key: "backend", label: "Backend" },
-  { key: "mobile", label: "Mobile" },
-  { key: "tools", label: "Tools" },
-];
-
+/** 06. TECHNICAL SKILLS — 실제 사용한 기술만, 숙련도 수치 없이 그룹별 태그 */
 export default function Skills() {
-  const categories = CATEGORIES.filter(
-    ({ key }) => skillsData[key] && skillsData[key].length > 0,
-  );
-
   return (
-    <section id="skills" className="py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <SectionTitle title="Skills" subtitle="기술 역량" />
+    <section className="sec alt" id="skills">
+      <div className="container">
+        <header className="sec-head">
+          <span className="sec-num">05</span>
+          <h2>기술 스택</h2>
+          <p>프로젝트에서 실제로 사용한 기술만 적었습니다. 숙련도는 위 프로젝트의 담당 범위로 대신합니다.</p>
+        </header>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map(({ key, label }, i) => (
-            <FadeIn key={key} delay={i * 0.05}>
-              <div className="h-full rounded-xl border border-border bg-card p-6">
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-accent">
-                  {label}
-                </h3>
-                <ul className="space-y-2.5">
-                  {skillsData[key].map((skill) => (
-                    <li
-                      key={skill.name}
-                      className="flex items-center gap-2 text-sm"
-                    >
-                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                      <span className="font-medium">{skill.name}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex flex-wrap gap-1.5 border-t border-border pt-4">
-                  {skillsData[key].map((skill) => (
-                    <SkillTag
-                      key={skill.name}
-                      label={skill.name}
-                      tagClass={skill.tagClass}
-                    />
-                  ))}
-                </div>
+        <div className="sk-grid">
+          {skillGroups.map((g) => (
+            <div key={g.group} className="sk">
+              <b>{g.group}</b>
+              <div className="chips">
+                {g.tags.map((t) => (
+                  <span key={t} className="chip">
+                    {t}
+                  </span>
+                ))}
               </div>
-            </FadeIn>
+            </div>
           ))}
         </div>
       </div>

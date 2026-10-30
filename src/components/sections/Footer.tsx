@@ -1,11 +1,9 @@
-import { docFooterData } from "@/data/portfolio";
+import { closingData } from "@/data/portfolio";
 
-/** original.html 의 footer */
 export default function Footer() {
   return (
-    <footer className="docfooter">
-      <span>{docFooterData.left}</span>
-      <span>{docFooterData.right}</span>
+    <footer className="site-footer">
+      <div className="container">{closingData.footer}</div>
     </footer>
   );
 }

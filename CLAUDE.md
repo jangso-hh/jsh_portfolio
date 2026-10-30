@@ -53,22 +53,23 @@ jsh_portfolio/
     │   ├── layout.tsx                # 루트 레이아웃 (테마 Provider, 폰트, 메타데이터)
     │   └── page.tsx                  # 메인 페이지 (섹션 조립)
     ├── components/
-    │   ├── Header.tsx                # 상단 네비게이션 (스크롤/모바일 메뉴)
-    │   ├── sections/                 # 페이지 섹션 — 각각 portfolio.ts 데이터 사용
-    │   │   ├── Hero.tsx              #  └ profileData
-    │   │   ├── About.tsx             #  └ aboutData
-    │   │   ├── Skills.tsx            #  └ skillsData
-    │   │   ├── Projects.tsx          #  └ projectsData (+ ProjectModal)
-    │   │   ├── Career.tsx            #  └ experienceData / educationData
-    │   │   ├── Achievements.tsx      #  └ awardData / certificateData / activityData
-    │   │   ├── Archiving.tsx         #  └ archivingData
-    │   │   ├── Contact.tsx           #  └ contactData
+    │   ├── Header.tsx                # 상단 네비게이션 (스크롤/모바일 메뉴 · 현재 섹션 표시)
+    │   ├── sections/                 # 페이지 섹션 — 각각 portfolio.ts 12번 블록 데이터 사용
+    │   │   ├── Hero.tsx              #  └ heroData
+    │   │   ├── Capabilities.tsx      #  └ capabilitiesData
+    │   │   ├── Projects.tsx          #  └ featuredProjects + moreProjects
+    │   │   ├── Impact.tsx            #  └ impactData (ERP 제품군)
+    │   │   ├── Experience.tsx        #  └ careerData
+    │   │   ├── Skills.tsx            #  └ skillGroups
+    │   │   ├── Documents.tsx         #  └ documentsData
+    │   │   ├── Contact.tsx           #  └ closingData
     │   │   └── Footer.tsx
     │   └── ui/                       # 재사용 UI 컴포넌트
-    │       ├── ProjectModal.tsx      #  └ 프로젝트 상세 모달 (notes·스크린샷·태그 렌더링)
+    │       ├── Zoom.tsx              #  └ 클릭하면 확대되는 이미지(라이트박스)
+    │       ├── ProjectModal.tsx      #  └ (구) 프로젝트 상세 모달 — 현재 페이지에서는 미사용
     │       ├── ThemeProvider.tsx     #  └ next-themes Provider 래퍼
     │       ├── ThemeToggle.tsx       #  └ 다크/라이트 토글 (마운트 가드 사용)
-    │       ├── FadeIn.tsx            #  └ 스크롤 등장 애니메이션 (Framer Motion)
+    │       ├── FadeIn.tsx            #  └ 스크롤 등장 애니메이션 — 현재 미사용(애니메이션 최소화)
     │       ├── SectionTitle.tsx
     │       ├── SkillTag.tsx
     │       └── ScrollToTop.tsx
@@ -83,7 +84,13 @@ jsh_portfolio/
 
 ## 데이터 관리 (`src/data/portfolio.ts`)
 
-파일은 **타입 정의 + 11개의 named export**로 구성된다. 각 export가 한 섹션을 담당한다.
+파일은 **타입 정의 + 1~11번 기본 export + 12번 화면 구성 블록**으로 구성된다.
+현재 페이지가 실제로 그리는 데이터는 **12번 블록**(`heroData`, `capabilitiesData`,
+`featuredProjects`, `moreProjects`, `impactData`, `careerData`, `skillGroups`,
+`documentsData`, `closingData`)이다. 1~11번은 원본 데이터로 유지한다.
+
+> **익명화 원칙**: 고객사·자사 제품명은 쓰지 않는다. 업종·규모(예: "운수사 ERP A · 154대 규모")로만 표기하고,
+> 스크린샷의 로고·사명·저장소명은 모자이크 처리한다.
 
 | export | 섹션 | 비고 |
 |--------|------|------|

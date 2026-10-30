@@ -5,15 +5,19 @@ import ThemeToggle from "./ui/ThemeToggle";
 import { profileData } from "@/data/portfolio";
 
 const NAV_ITEMS = [
-  { label: "About me", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Career", href: "#career" },
-  { label: "Documents", href: "#achievements" },
+  { label: "역량", href: "#capabilities" },
+  { label: "프로젝트", href: "#projects" },
+  { label: "ERP 제품군", href: "#impact" },
+  { label: "경력", href: "#experience" },
+  { label: "스킬", href: "#skills" },
+  { label: "문서", href: "#documents" },
+  { label: "연락", href: "#contact" },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -22,59 +26,52 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // 현재 보고 있는 섹션을 네비게이션에 표시
+  useEffect(() => {
+    const sections = NAV_ITEMS.map((n) => document.querySelector<HTMLElement>(n.href)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(`#${visible[0].target.id}`);
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    sections.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-colors ${
-        scrolled
-          ? "border-b border-border bg-background/80 backdrop-blur-md"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
-        <a href="#" className="font-mono text-lg font-bold">
-          {profileData.nameEn}
+    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+      <div className="container nav-row">
+        <a href="#top" className="brand">
+          {profileData.name}
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="nav-desktop">
           {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
-            >
+            <a key={item.href} href={item.href} className={active === item.href ? "active" : undefined}>
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="nav-tools">
           <ThemeToggle />
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label="메뉴"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card md:hidden"
-          >
+          <button type="button" onClick={() => setOpen((v) => !v)} aria-label="메뉴" className="nav-burger">
             ☰
           </button>
         </div>
       </div>
 
-      {/* 모바일 메뉴 */}
       {open && (
-        <nav className="border-t border-border bg-background md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col px-4 py-2 sm:px-6">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="py-2 text-sm text-muted hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
+        <nav className="nav-mobile">
+          {NAV_ITEMS.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className={active === item.href ? "active" : undefined}>
+              {item.label}
+            </a>
+          ))}
         </nav>
       )}
     </header>

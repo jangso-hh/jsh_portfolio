@@ -1,190 +1,139 @@
-import Image from "next/image";
-import FadeIn from "@/components/ui/FadeIn";
-import {
-  caseStudiesData,
-  erpCaseStudy,
-  erpIntro,
-  erpModulesData,
-  erpProjectsData,
-  erpStackData,
-  type CaseStudy,
-} from "@/data/portfolio";
+import Zoom from "@/components/ui/Zoom";
+import { featuredProjects, moreProjects, type DetailBlock } from "@/data/portfolio";
 import { em } from "@/lib/em";
 
-/** 이미지가 원본처럼 가로폭 100%·비율 유지로 렌더링되도록 하는 공통 속성 */
-const fluidImg = {
-  width: 0,
-  height: 0,
-  sizes: "(max-width: 960px) 100vw, 960px",
-  style: { width: "100%", height: "auto" } as const,
-};
-
-/**
- * 케이스 카드 — 한눈에 보이는 건 헤더·스크린샷·어필 한 줄.
- * 배경/내가 한 일은 <details>로 접어 두고 필요할 때만 펼친다.
- */
-function CaseStudyCard({ cs }: { cs: CaseStudy }) {
-  const impact = cs.rows.find((r) => r.impact);
-  const detail = cs.rows.filter((r) => !r.impact);
-  const phone = cs.shots?.find((s) => s.phone);
-  const shots = cs.shots?.filter((s) => !s.phone);
-
-  const body = (
-    <>
-      {shots?.map((shot) => (
-        <div key={shot.src}>
-          <Image className="shot" src={shot.src} alt={shot.caption} {...fluidImg} />
-          <div className="shotcap">{shot.caption}</div>
+function Details({ blocks }: { blocks?: DetailBlock[] }) {
+  if (!blocks?.length) return null;
+  return (
+    <details className="more">
+      <summary>상세 내용</summary>
+      {blocks.map((b) => (
+        <div key={b.label} className="more-block">
+          <b>{b.label}</b>
+          <ul>
+            {b.items.map((it) => (
+              <li key={it}>{em(it)}</li>
+            ))}
+          </ul>
         </div>
       ))}
-      {cs.beforeAfter && (
-        <>
-          <div className="ba">
-            <div className="bac">
-              <span className="bt old">BEFORE · 기존 구형 UI</span>
-              <Image src={cs.beforeAfter.before} alt="기존 디자인" {...fluidImg} />
-            </div>
-            <div className="bac">
-              <span className="bt new">AFTER · 직접 리디자인</span>
-              <Image src={cs.beforeAfter.after} alt="신규 디자인" {...fluidImg} />
-            </div>
-          </div>
-          <div className="arrowrow">{cs.beforeAfter.caption}</div>
-        </>
-      )}
-      {impact && (
-        <div className="row impact">
-          <div className="k">{impact.label}</div>
-          <div className="val">{impact.text && em(impact.text)}</div>
-        </div>
-      )}
-      <details className="more">
-        <summary>배경 · 내가 한 일</summary>
-        {detail.map((row) => (
-          <div key={row.label} className="row">
-            <div className="k">{row.label}</div>
-            <div className="val">
-              {row.text && em(row.text)}
-              {row.items && (
-                <ul>
-                  {row.items.map((item, i) => (
-                    <li key={i}>{em(item)}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-        ))}
-      </details>
-      <div className="stk">
-        {cs.stack.map((s) => (
-          <span key={s}>{s}</span>
-        ))}
-      </div>
-    </>
-  );
-
-  return (
-    <div className={`cs${cs.purple ? " purple" : ""}`}>
-      <div className="cshd">
-        <span className="tag">{cs.tag}</span>
-        <h3>{cs.title}</h3>
-        <div className="role">{cs.role}</div>
-      </div>
-      {phone ? (
-        <div className="csbd withphone">
-          <div className="phonecol">
-            <Image className="shot phone" src={phone.src} alt={phone.caption} {...fluidImg} />
-            <div className="shotcap">{phone.caption}</div>
-          </div>
-          <div>{body}</div>
-        </div>
-      ) : (
-        <div className="csbd">{body}</div>
-      )}
-    </div>
+    </details>
   );
 }
 
-/** 대표 프로젝트 ①(단독 제품) + ②(ERP 리디자인·개발 + 연동 모듈) */
+/** 03. SELECTED PROJECTS — 대표 3건(이미지 중심) + 그 외 프로젝트(컴팩트) */
 export default function Projects() {
   return (
-    <>
-      <div className="part" id="projects">
-        <span className="pn">★</span> 대표 프로젝트 ① · 단독으로 기획·개발한 제품
-      </div>
-      <div className="docbody">
-        {caseStudiesData.map((cs) => (
-          <FadeIn key={cs.title}>
-            <CaseStudyCard cs={cs} />
-          </FadeIn>
-        ))}
-      </div>
+    <section className="sec" id="projects">
+      <div className="container">
+        <header className="sec-head">
+          <span className="sec-num">02</span>
+          <h2>대표 프로젝트</h2>
+          <p>기획부터 운영까지 직접 맡은 세 건입니다. 상세 내용은 각 카드 아래에서 펼쳐 볼 수 있습니다.</p>
+        </header>
 
-      <div className="part">
-        <span className="pn">★</span> 대표 프로젝트 ② · 운수사 ERP 전 제품 리디자인 &amp; 개발
-      </div>
-      <div className="docbody">
-        <section style={{ marginTop: 20 }}>
-          <FadeIn>
-            <CaseStudyCard cs={erpCaseStudy} />
-          </FadeIn>
+        {featuredProjects.map((p) => (
+          <article key={p.num} className="fp">
+            <div className="fp-head">
+              <span className="fp-num">PROJECT {p.num}</span>
+              <h3>{p.title}</h3>
+              <p className="fp-tagline">{p.tagline}</p>
+              <span className="fp-period">{p.period}</span>
+            </div>
 
-          <p className="bigp">{em(erpIntro)}</p>
-
-          <div className="pjgrid">
-            {erpProjectsData.map((pj) => (
-              <FadeIn key={pj.name}>
-                <div className="pj">
-                  <Image
-                    className="pjshot"
-                    src={pj.image}
-                    alt={`${pj.name} 대시보드`}
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 720px) 100vw, 440px"
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                  <div className="ph">
-                    <b>{pj.name}</b>
-                    <span className={`lv lv-${pj.badgeType}`}>{pj.badge}</span>
-                    <span className="pd">{pj.scale}</span>
+            {p.shots?.map((s) => (
+              <figure key={s.src} className="fp-shot">
+                <Zoom src={s.src} alt={s.caption} />
+                <figcaption>{s.caption}</figcaption>
+              </figure>
+            ))}
+            {p.beforeAfter && (
+              <figure className="fp-shot">
+                <div className="ba">
+                  <div className="ba-col">
+                    <span className="ba-label old">BEFORE</span>
+                    <Zoom src={p.beforeAfter.before} alt="기존 UI" sizes="(max-width: 720px) 100vw, 520px" />
                   </div>
-                  <div className="tl2">{pj.summary}</div>
-                  <details className="more">
-                    <summary>상세</summary>
-                    <ul>
-                      {pj.items.map((item, i) => (
-                        <li key={i}>{em(item)}</li>
-                      ))}
-                    </ul>
-                  </details>
+                  <div className="ba-col">
+                    <span className="ba-label new">AFTER</span>
+                    <Zoom src={p.beforeAfter.after} alt="리디자인 UI" sizes="(max-width: 720px) 100vw, 520px" />
+                  </div>
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+                <figcaption>{p.beforeAfter.caption}</figcaption>
+              </figure>
+            )}
 
-          <div className="stack" style={{ marginTop: 14 }}>
-            {erpStackData.map((s) => (
-              <span key={s} className="tag2">
-                {s}
-              </span>
-            ))}
-          </div>
-        </section>
+            <div className="fp-grid">
+              <div>
+                <h4>프로젝트 개요</h4>
+                <p className="fp-overview">{em(p.overview)}</p>
+                <h4>담당 역할</h4>
+                <div className="chips">
+                  {p.roles.map((r) => (
+                    <span key={r} className="chip role">
+                      {r}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h4>주요 구현 내용</h4>
+                <ul className="list">
+                  {p.highlights.map((h) => (
+                    <li key={h}>{em(h)}</li>
+                  ))}
+                </ul>
+                <h4>성과 및 결과</h4>
+                <ul className="list result">
+                  {p.results.map((r) => (
+                    <li key={r}>{em(r)}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-        <FadeIn>
-          <section>
-            <h2>
-              ERP 연동 모듈{" "}
-              <span className="sub2">외부 벤더·장비 데이터를 ERP 안으로 — 설계·개발</span>
-            </h2>
-            {erpModulesData.map((cs) => (
-              <CaseStudyCard key={cs.title} cs={cs} />
-            ))}
-          </section>
-        </FadeIn>
+            <div className="chips stack">
+              {p.stack.map((s) => (
+                <span key={s} className="chip">
+                  {s}
+                </span>
+              ))}
+            </div>
+            <Details blocks={p.details} />
+          </article>
+        ))}
+
+        <h3 className="sub-title">그 외 프로젝트</h3>
+        <div className="mp-grid">
+          {moreProjects.map((m) => (
+            <article key={m.title} className={`mp${m.side ? " side" : ""}${m.shot?.kind === "mobile" ? " with-phone" : ""}`}>
+              {m.shot && (
+                <figure className={`mp-shot ${m.shot.kind ?? "web"}`}>
+                  <Zoom src={m.shot.src} alt={m.shot.caption} sizes="(max-width: 720px) 100vw, 480px" />
+                </figure>
+              )}
+              <div className="mp-body">
+                <span className="mp-meta">{m.meta}</span>
+                <h4>{m.title}</h4>
+                <p className="mp-tagline">{m.tagline}</p>
+                <ul className="list">
+                  {m.highlights.map((h) => (
+                    <li key={h}>{em(h)}</li>
+                  ))}
+                </ul>
+                <div className="chips">
+                  {m.stack.map((s) => (
+                    <span key={s} className="chip">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                <Details blocks={m.details} />
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-    </>
+    </section>
   );
 }
