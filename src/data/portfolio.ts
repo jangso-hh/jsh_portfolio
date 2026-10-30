@@ -134,7 +134,7 @@ export const profileData: ProfileData = {
   name: "장소현",
   nameEn: "Jang So Hyeon",
   role: "Product Manager × Full-stack Engineer · Mobility",
-  tagline: "모빌리티 ERP Product Manager — 기획부터 직접 구현까지",
+  tagline: "모빌리티 ERP Product Manager · 기획부터 구현까지",
   email: "seoulsoftinfo@gmail.com",
   // 아래 링크는 PDF에 없어 비워둠 — 값을 채우면 Hero/Contact/Archiving에 자동 노출됩니다.
   github: "",
@@ -539,9 +539,9 @@ export interface Toggle {
 export const pageData = {
   icon: "🧑‍💻",
   title: "장소현",
-  subtitle: "Product Manager · 모빌리티 ERP (기획 → 직접 구현)",
+  subtitle: "Product Manager · 모빌리티 ERP",
   intro:
-    "모빌리티 ERP의 **기획과 PM을 본업**으로, 요구사항 정의·화면 설계·일정 관리까지 제품 전 과정을 담당합니다. 기획한 내용을 가장 정확하게 구현하기 위해 개발까지 범위를 넓혔고, 현재는 ERP 전 모듈·그룹웨어·모바일 앱을 **백엔드부터 프론트엔드, 모바일까지 직접 구현**합니다. AI 코딩 도구를 개발 프로세스에 적용해 기획–구현–배포를 한 사람이 끝까지 책임집니다.",
+    "운수사 ERP를 기획하고 운영하는 PM입니다. 요구사항 정의와 화면 설계, 일정 관리를 맡아 오다 기획이 구현 과정에서 흐려지는 일을 줄이고자 **직접 개발을 시작**했고, 지금은 ERP 전 모듈과 그룹웨어, 모바일 앱을 백엔드부터 프론트엔드, 앱까지 구현하고 있습니다. AI 코딩 도구를 적극 활용해 기획부터 배포까지 한 흐름으로 진행합니다.",
   props: [
     { k: "소속", v: "㈜서울소프트 개발3팀(모빌리티팀) · 2024.06 ~" },
     { k: "역할", v: "PM · UI/UX · Full-stack 개발" },
@@ -553,7 +553,7 @@ export const pageData = {
 /* ---------- 한눈에 보기 ---------- */
 
 export const glanceData = {
-  callout: "**PM이 본업이며, 기획한 제품을 직접 구현합니다.** 아래 프로젝트는 요구사항 정의부터 개발까지 직접 수행했고, 그중 절반은 설계부터 출시까지 단독으로 완성했습니다.",
+  callout: "**기획한 제품을 직접 만드는 PM입니다.** 아래 프로젝트는 요구사항 정의부터 개발까지 맡았고, 절반은 설계부터 출시까지 단독으로 진행했습니다.",
   stats: [
     { k: "운수사 ERP", v: "6개 제품군 · 21개 모듈 개발" },
     { k: "단독 구축", v: "그룹웨어 1종 · 음주측정 웹+앱 1종" },
@@ -961,7 +961,7 @@ export const sideProject = {
 /* ---------- 연락 ---------- */
 
 export const closingData = {
-  headline: "제품을 이해하고 문제를 정의하며, 직접 구현해 결과로 연결합니다.",
+  headline: "문제를 정의하고, 직접 만들어 결과까지 책임집니다.",
   sub: "함께 더 나은 제품을 만들어 갈 기회를 기다립니다.",
   email: profileData.email,
   footer: "장소현 · Product Manager & Full-stack Developer · 2024–2026",
