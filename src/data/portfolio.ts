@@ -135,7 +135,7 @@ export const profileData: ProfileData = {
   nameEn: "Jang So Hyeon",
   role: "Product Manager × Full-stack Engineer · Mobility",
   tagline: "모빌리티 ERP Product Manager · 기획부터 구현까지",
-  email: "seoulsoftinfo@gmail.com",
+  email: "wkdthgus8069@gmail.com",
   // 아래 링크는 PDF에 없어 비워둠 — 값을 채우면 Hero/Contact/Archiving에 자동 노출됩니다.
   github: "",
   blog: "",
