@@ -158,7 +158,7 @@ export const educationData: EducationItem[] = [];
 
 function getAboutDetails(): AboutDetail[] {
   return [
-    { icon: "🧭", label: "소속", value: "㈜서울소프트 개발3팀 · 모빌리티팀" },
+    { icon: "🧭", label: "소속", value: "모빌리티 ERP 전문 SW 기업 · 개발3팀(모빌리티팀)" },
     { icon: "💼", label: "역할", value: "Full-stack Engineer & PM" },
     { icon: "🚗", label: "도메인", value: "모빌리티 (배차·정산·급여·DTG·음주측정)" },
     { icon: "✉️", label: "Email", value: profileData.email },
@@ -381,14 +381,14 @@ export const projectsData: Project[] = [
 ];
 
 /* =========================================================================
- * 6. experienceData — 경력 (㈜서울소프트 · 상세 이력 2024–2026, 최신순)
+ * 6. experienceData — 경력 (모빌리티 ERP 전문 SW 기업 · 상세 이력 2024–2026, 최신순)
  * ====================================================================== */
 
 export const experienceData: ExperienceItem[] = [
   {
-    title: "㈜서울소프트 · 개발3팀(모빌리티팀)",
+    title: "모빌리티 ERP 전문 SW 기업 · 개발3팀(모빌리티팀)",
     role: "PM · 풀스택 개발 동시 주도",
-    period: "2026.01 ~ 현재",
+    period: "2026.01 ~ 2026.12",
     description:
       "계약 실행·신규 ERP 도입과 함께 개발 본격 전환. 기획·관리와 풀스택 개발·디자인을 병행 — 두 역량 모두 주력.",
     details: [
@@ -402,7 +402,7 @@ export const experienceData: ExperienceItem[] = [
     techStack: ["Django", "React", "TypeScript", "Flutter", "SCSS"],
   },
   {
-    title: "㈜서울소프트 · 사업추진팀",
+    title: "모빌리티 ERP 전문 SW 기업 · 사업추진팀",
     role: "제품화 & B2B 영업·조달 본격화",
     period: "2025.09 ~ 2025.12",
     description: "자사 모빌리티 ERP 제품화와 B2B 영업·정부조달을 본격적으로 추진.",
@@ -413,7 +413,7 @@ export const experienceData: ExperienceItem[] = [
     ],
   },
   {
-    title: "㈜서울소프트 · 사업추진팀",
+    title: "모빌리티 ERP 전문 SW 기업 · 사업추진팀",
     role: "모빌리티 ERP 화면설계·기획 총괄 + 다중 프로젝트 WBS",
     period: "2025.01 ~ 2025.08",
     description:
@@ -425,7 +425,7 @@ export const experienceData: ExperienceItem[] = [
     ],
   },
   {
-    title: "㈜서울소프트 · 사업추진팀",
+    title: "모빌리티 ERP 전문 SW 기업 · 사업추진팀",
     role: "PM 온보딩 + 모빌리티 ERP 혁신제품 지정",
     period: "2024.06 ~ 2024.12",
     description:
@@ -543,7 +543,7 @@ export const pageData = {
   intro:
     "운수사 ERP를 기획하고 운영하는 PM입니다. 요구사항 정의와 화면 설계, 일정 관리를 맡아 오다 기획이 구현 과정에서 흐려지는 일을 줄이고자 **직접 개발을 시작**했고, 지금은 ERP 전 모듈과 그룹웨어, 모바일 앱을 백엔드부터 프론트엔드, 앱까지 구현하고 있습니다. AI 코딩 도구를 적극 활용해 기획부터 배포까지 한 흐름으로 진행합니다.",
   props: [
-    { k: "소속", v: "㈜서울소프트 개발3팀(모빌리티팀) · 2024.06 ~" },
+    { k: "경력", v: "모빌리티 ERP 전문 SW 기업 · PM → PM & 개발 · 2024.06 ~ 2026.12" },
     { k: "역할", v: "PM · UI/UX · Full-stack 개발" },
     { k: "도메인", v: "시내버스 운수사 ERP · 그룹웨어 · 현장 업무 모바일 앱 (B2B)" },
     { k: "기술", v: "Python/Django · React/TypeScript · Flutter · MySQL" },
@@ -584,7 +584,7 @@ export const devProjects: DevProject[] = [
     title: "운수사 ERP — 메인 제품 (운수사 ERP B)",
     oneLiner: "시내버스 운수사 ERP의 전 모듈 개발 + UI/UX 전면 리뉴얼 + 외부 연동",
     props: [
-      { k: "기간", v: "2025 ~ 현재" },
+      { k: "기간", v: "2025 ~ 2026" },
       { k: "역할", v: "전 모듈 개발 · 디자인 시스템 · 요구사항 정의" },
       { k: "담당 범위", v: "ERP 21개 모듈 전체 (기초정보 · 차량 · 배차 · 인사 · 급여 · 회계 · 수입금 · 정비 · 자재 · 시설 · 안전 · FMS 등)" },
       { k: "팀", v: "모빌리티팀 (메인 개발)" },
@@ -871,11 +871,11 @@ export interface CareerYear {
 }
 
 export const careerData = {
-  company: "㈜서울소프트",
-  period: "2024.06 ~ 현재",
+  company: "모빌리티 ERP 전문 SW 기업",
+  period: "2024.06 ~ 2026.12",
   roles: [
     { title: "사업추진팀 · PM", period: "2024.06 ~ 2025.12" },
-    { title: "개발3팀(모빌리티팀) · PM & Full-stack 개발", period: "2026.01 ~ 현재" },
+    { title: "개발3팀(모빌리티팀) · PM & Full-stack 개발", period: "2026.01 ~ 2026.12" },
   ],
   years: [
     {
