@@ -304,7 +304,7 @@ export const projectsData: Project[] = [
       "개발 진척·성과·정부지원사업 데이터를 수기로 취합해 관리 부담이 큰 상황이었습니다. " +
       "필요한 도구를 스스로 발굴해, 웹훅·자동 매칭 같은 실무형 자동화를 직접 설계·구축했습니다.",
     image: "",
-    screenshotDir: "seoulsoft-groupware",
+    screenshotDir: "internal-groupware",
     techStack: [
       "Django",
       "GitHub 웹훅·분석",
